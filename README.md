@@ -12,7 +12,7 @@ Info:
 
 Server:
   set_autorole    ...Nastavit automatickou roli.
-  set_botlog      ...Nastaví channel BOT LOG
+  set_botlog      ...Nastaví channel BOT LOG.
   set_guild_url   ...Nastavit url serveru.
   set_msg_private ...Nastavit Privátní welcome zprávu (max 255 znaků).
   set_msg_welcome ...Nastavit Welcome zprávu (max 255 znaků).
