@@ -139,6 +139,116 @@ class Server(commands.Cog):
                     color = discord.Colour.dark_red()
                     )
         await ctx.send(embed=embed)
+#----------------------------_WELCOME_----------------------------
+    @commands.command(aliases=["wmsg"],
+					help = "Nastavit Welcome zprávu (max délka 255 znaků).",
+                    description="""Můžete použít:
+                                    Member ... {user}
+                                    Server ... {server}
+                                    Owner ... {owner}
+                                    Url ... {url}
+                                    
+                                    *[welcome_message] "message" ... zobrazí aktuální zprávu*
+                                    """
+                    )
+    @commands.has_permissions(administrator = True)
+    async def welcome_message(self, ctx, message: str):
+        guild = ctx.guild
+        author = ctx.author
+        owner = guild.owner.mention
+
+        if message == "None" or message == "" or message == "default":
+            wm = "Ahoj \{member.mention}, vítej na serveru \**{guild.name}**!"
+            welcome_text = f"Ahoj {author.mention}, vítej na serveru **{guild.name}**!"
+            
+            f = open(f"guilds/{guild.id}.json", "r+") 
+            data = json.load(f)
+            data["WelcomeMSG"] = wm
+            f.seek(0)
+            json.dump(data, f)
+            f.truncate()
+            f.close()
+            
+            embed = discord.Embed(
+                        color = randint(0, 0xffffff)
+                    )
+            embed.add_field(name="Welcome zpráva je nastavena na základní:", value=wm, inline=False)
+            await ctx.send(embed=embed)
+
+        else:
+            if message == "message" or message == "now":
+                f = open(f"guilds/{guild.id}.json", "r")
+                data = json.load(f)
+                message = data["WelcomeMSG"]
+                    
+                try:
+                    url = data["URL"]
+                    if url == "":
+                        url = None
+                except:
+                    url = None
+                f.close() 
+                message = message.replace("{user}",f"{author.mention}")
+                message = message.replace("{server}",f"{guild.name}")
+                message = message.replace("{owner}",f"{owner}")
+                message = message.replace("{url}",f"{url}")
+                
+                icon_url = guild.icon_url
+
+                embedW = discord.Embed(
+                    description = message,
+                    color = discord.Colour.purple()
+                    )
+                embedW.set_author(name=guild.name, icon_url=icon_url)
+                embedW.set_thumbnail(url=icon_url)
+
+                await ctx.send(embed=embedW)
+            else:
+                if len(message) < 333:
+                    f = open(f"guilds/{guild.id}.json", "r+") 
+                    data = json.load(f)
+                    data["WelcomeMSG"] = message
+                    f.seek(0)
+                    json.dump(data, f)
+                    f.truncate()
+                    
+                    try:
+                        url = data["URL"]
+                        if url == "":
+                            url = None
+                    except:
+                        url = None
+                    f.close()
+                    
+                    embed = discord.Embed(
+                                color = randint(0, 0xffffff)
+                            )
+                    embed.add_field(name="Welcome zpráva je nastavena na:", value=message, inline=False)
+                    embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
+                    await ctx.send(embed=embed)
+                    
+                    message = message.replace("{user}",f"{author.mention}")
+                    message = message.replace("{server}",f"{guild.name}")
+                    message = message.replace("{owner}",f"{owner}")
+                    message = message.replace("{url}",f"{url}")
+                    
+                    icon_url = guild.icon_url
+
+                    embedW = discord.Embed(
+                        description = message,
+                        color = discord.Colour.purple()
+                        )
+                    embedW.set_author(name=guild.name, icon_url=icon_url)
+                    embedW.set_thumbnail(url=icon_url)
+
+                    await ctx.send(embed=embedW)
+                else:
+                    embed= discord.Embed(
+                            title = "Zpráva je moc dlouhá.",
+                            description = f"{len(message)} znaků!",
+                            color = discord.Colour.dark_red()
+                            )
+                    await ctx.send(embed=embed)
 
 def setup(bot):
     bot.add_cog(Server(bot))

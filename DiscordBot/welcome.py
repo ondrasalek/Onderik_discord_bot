@@ -13,7 +13,6 @@ class Welcome(commands.Cog):
         
         owner = guild.owner.mention
         icon_url = guild.icon_url
-        #avatar_url = owner.avatar_url
 
         # autorole
         f = open(f"guilds/{guild.id}.json", "r")
@@ -37,13 +36,26 @@ class Welcome(commands.Cog):
                 url = None
         except:
             url = None
+            
+        try:
+            wmsg = data["WelcomeMSG"]
+            if wmsg == "":
+                wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
+        except:
+            wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
+
         f.close()
+        
+        wmsg = wmsg.replace("{user}",f"{member.mention}")
+        wmsg = wmsg.replace("{server}",f"{guild.name}")
+        wmsg = wmsg.replace("{owner}",f"{owner}")
+        wmsg = wmsg.replace("{url}",f"{url}")
         
         try:
             #Soukromá zpráva
             embedPM = discord.Embed(
                 title=url,
-                description=f"Ahoj {member.mention}, na serveru **{guild.name}** si prosím nastav přezdívku tak, ať se poznáme.",
+                description=f"Ahoj, vítej na serveru **{guild.name}**.",
                 color = discord.Colour.green()
             )
             embedPM.set_author(name=guild.name, icon_url=icon_url)
@@ -52,7 +64,7 @@ class Welcome(commands.Cog):
             #Vítací zpráva
             embedMSG = discord.Embed(
                 #title = f"{guild.name}",
-                description = f"Ahoj {member.mention}, vítej na serveru **{guild.name}**!",
+                description = wmsg,
                 color = discord.Colour.purple()
             )
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
@@ -62,7 +74,7 @@ class Welcome(commands.Cog):
             #Vítací zpráva
             embedMSG = discord.Embed(
                 #title = f"{guild.name}",
-                description = f"Ahoj {member.mention}, vítej na serveru **{guild.name}**!",
+                description = wmsg,
                 color = discord.Colour.purple()
             )
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
@@ -74,6 +86,6 @@ class Welcome(commands.Cog):
             await channel.send(embed=embedMSG)
         except:
             pass
-
+        
 def setup(bot):
     bot.add_cog(Welcome(bot))

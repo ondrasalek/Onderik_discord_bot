@@ -45,7 +45,7 @@ if __name__ == '__main__':
 async def on_ready():
     print(f'{bot.user.name} online 🟢')
     print(f"Discord verze: {discord.__version__}")
-    await bot.change_presence(activity=discord.Game(f"🤖{prikaz}🤖"))
+    await bot.change_presence(activity=discord.Game(name=f"🤖{prikaz}🤖"))
 	#------------------------------------------------------------------
     guilds = bot.guilds
     for guild in guilds:
