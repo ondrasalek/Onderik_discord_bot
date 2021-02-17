@@ -39,11 +39,20 @@ class Welcome(commands.Cog):
             
         try:
             wmsg = data["WelcomeMSG"]
-            if wmsg == "":
-                wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
         except:
             wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
 
+        try:
+            pmsg = data["PrivateMSG"]
+            if pmsg == "":
+                pmsg = None
+            else:
+                pmsg = pmsg.replace("{user}",f"{member.mention}")
+                pmsg = pmsg.replace("{server}",f"{guild.name}")
+                pmsg = pmsg.replace("{owner}",f"{owner}")
+                pmsg = pmsg.replace("{url}",f"{url}")
+        except:
+            pmsg = None
         f.close()
         
         wmsg = wmsg.replace("{user}",f"{member.mention}")
@@ -52,24 +61,25 @@ class Welcome(commands.Cog):
         wmsg = wmsg.replace("{url}",f"{url}")
         
         try:
-            #Soukromá zpráva
-            embedPM = discord.Embed(
-                title=url,
-                description=f"Ahoj, vítej na serveru **{guild.name}**.",
-                color = discord.Colour.green()
-            )
-            embedPM.set_author(name=guild.name, icon_url=icon_url)
-            await member.send(embed=embedPM)
+            if pmsg is None:
+                #Vítací zpráva
+                embedMSG = discord.Embed(
+                    #title = f"{guild.name}",
+                    description = wmsg,
+                    color = discord.Colour.purple()
+                )
+                embedMSG.set_author(name=guild.name, icon_url=icon_url)
+                embedMSG.set_thumbnail(url=icon_url)
+            else:
+                #Soukromá zpráva
+                embedPM = discord.Embed(
+                    title=url,
+                    description=pmsg,
+                    color = discord.Colour.green()
+                )
+                embedPM.set_author(name=guild.name, icon_url=icon_url)
+                await member.send(embed=embedPM)
 
-            #Vítací zpráva
-            embedMSG = discord.Embed(
-                #title = f"{guild.name}",
-                description = wmsg,
-                color = discord.Colour.purple()
-            )
-            embedMSG.set_author(name=guild.name, icon_url=icon_url)
-            embedMSG.add_field(name="Abys měl správné role, napiš uživateli:", value=owner, inline=True)
-            embedMSG.set_thumbnail(url=icon_url)
         except Exception: 
             #Vítací zpráva
             embedMSG = discord.Embed(
@@ -78,8 +88,6 @@ class Welcome(commands.Cog):
                 color = discord.Colour.purple()
             )
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
-            embedMSG.add_field(name="Abys měl správné role, napiš uživateli:", value=owner, inline=True)
-            embedMSG.set_footer(text="Nemáš povolené posílání zpráv od uživatelů na serveru, nastav si to prosím.")
             embedMSG.set_thumbnail(url=icon_url)
         try:
             channel = guild.system_channel

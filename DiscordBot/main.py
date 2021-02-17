@@ -50,7 +50,8 @@ async def on_ready():
     guilds = bot.guilds
     for guild in guilds:
         guild_dict = {
-					"GuildID":guild.id
+					"GuildID":guild.id,
+					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!"
 					}
         try:
             f = open(f"guilds/{guild.id}.json", "r")
