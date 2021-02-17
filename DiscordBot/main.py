@@ -60,6 +60,22 @@ async def on_ready():
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
         f.close()
+@bot.event
+async def on_guild_join(ctx):
+    guilds = bot.guilds
+    for guild in guilds:
+        guild_dict = {
+					"GuildID":guild.id,
+					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!"
+					}
+        try:
+            f = open(f"guilds/{guild.id}.json", "r")
+            data = json.load(f)
+        except:
+            f = open(f"guilds/{guild.id}.json", "w")
+            json.dump(guild_dict, f)
+        f.close()
+
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)
