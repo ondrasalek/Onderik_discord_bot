@@ -43,11 +43,10 @@ if __name__ == '__main__':
 #-----------------------_ON_READY_---------------------------------
 @bot.event
 async def on_ready():
-    change_status.start()
     print(f'{bot.user.name} online 🟢')
     print(f"Discord verze: {discord.__version__}")
-
-#------------------------------------------------------------------
+    await bot.change_presence(activity=discord.Game(f"🤖{prikaz}🤖"))
+	#------------------------------------------------------------------
     guilds = bot.guilds
     for guild in guilds:
         guild_dict = {
@@ -60,11 +59,6 @@ async def on_ready():
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
         f.close()
-#-----------------------_ACTIVITY_---------------------------------
-status = cycle([prikaz,"🔴LIVE",prikaz,"🤖BOT",prikaz,"🟢author: ONDER"])
-@tasks.loop(seconds=5)
-async def change_status():
-    await bot.change_presence(activity=discord.Game(next(status)))
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)
