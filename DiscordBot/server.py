@@ -8,14 +8,14 @@ class Server(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 #----------------------------_AUTOROLE_----------------------------
-    @commands.command(aliases=["ar"],
+    @commands.command(aliases=["ar","autorole"],
 					help = "Nastavit automatickou roli.",
                     description="""
-                                * [autorole] ... Zruší automatické role *
+                                * [set_autorole] ... Zruší automatické role *
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def autorole(self, ctx, role: discord.Role = None):
+    async def set_autorole(self, ctx, role: discord.Role = None):
         guild = ctx.guild
         roles = guild.roles
         if role is None:
@@ -48,15 +48,15 @@ class Server(commands.Cog):
                     )
         await ctx.send(embed=embed)
 #-------------------------------_URL_--------------------------------
-    @commands.command(aliases=["url"],
+    @commands.command(aliases=["url","guild_url"],
                     help = "Nastavit url serveru.",
                     description="""
-                                * [url] "None" ... Zruší URL *
-                                * [url] "url" ... zobrazí aktuální URL *
+                                * [set_guild_url] "None" ... Zruší URL *
+                                * [set_guild_url] "url" ... zobrazí aktuální URL *
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def guild_url(self, ctx, url: str):
+    async def set_guild_url(self, ctx, url: str):
         guild = ctx.guild
         if url == "None" or url == "" or url == "none":
             f = open(f"guilds/{guild.id}.json", "r+") 
@@ -119,7 +119,7 @@ class Server(commands.Cog):
                                 )
         await ctx.send(embed=embed)
 #----------------------------_BOTLOG_----------------------------
-    @commands.command(aliases=["bl"],
+    @commands.command(aliases=["bl","botlog"],
 					help = "Nastaví channel BOT LOG",
                     description="""
                                 * [set_botlog] "None" ... Zruší aktuální botlog channel *
@@ -197,7 +197,7 @@ class Server(commands.Cog):
                         )
         await ctx.send(embed=embed)
 #----------------------------_WELCOME_----------------------------
-    @commands.command(aliases=["wmsg"],
+    @commands.command(aliases=["wmsg","welcome"],
 					help = "Nastavit Welcome zprávu (max 255 znaků).",
                     description="""
                                 Můžete použít:
@@ -206,11 +206,11 @@ class Server(commands.Cog):
                                 Owner ... {owner}
                                 Url ... {url}
                                 
-                                * [welcome_message] "message" ... zobrazí aktuální zprávu *
+                                * [set_msg_welcome] "message" ... zobrazí aktuální zprávu *
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def welcome_message(self, ctx, message: str):
+    async def set_msg_welcome(self, ctx, message: str):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
@@ -313,7 +313,7 @@ class Server(commands.Cog):
                             )
                     await ctx.send(embed=embed)
 #----------------------------_PRIVATE_----------------------------
-    @commands.command(aliases=["pmsg"],
+    @commands.command(aliases=["pmsg","private"],
 					help = "Nastavit Privátní welcome zprávu (max 255 znaků).",
                     description="""
                                 Můžete použít:
@@ -322,11 +322,11 @@ class Server(commands.Cog):
                                 Owner ... {owner}
                                 Url ... {url}
                                 
-                                * [private_w_message] "message" ... zobrazí aktuální zprávu *
+                                * [set_msg_private] "message" ... zobrazí aktuální zprávu *
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def private_w_message(self, ctx, message: str):
+    async def set_msg_private(self, ctx, message: str):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
