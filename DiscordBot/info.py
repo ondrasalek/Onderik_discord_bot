@@ -15,6 +15,7 @@ class Info(commands.Cog):
     async def info_bot(self, ctx):
         guild = ctx.guild
 
+        
         f = open("configuration.json", "r")
         data = json.load(f)
         prefix = data["prefix"]
@@ -37,7 +38,6 @@ class Info(commands.Cog):
         embed.set_thumbnail(url=avatar_url)
         embed.add_field(name="Vznikl", value=created, inline=True)
         embed.add_field(name="Nabídka příkazů", value=prikaz, inline=True)
-        embed.set_footer(text=f"Zavolal: {author}")
 
         f = open(f"guilds/{guild.id}.json", "r")
         data = json.load(f)
@@ -63,8 +63,14 @@ class Info(commands.Cog):
             botlog = None
         f.close()
 
-        embed.add_field(name="Chceš mě na svůj server?", value="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot",inline=False)
-
+        embed.add_field(name = "Chceš mě na svůj server?", value="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot", inline=True)
+        
+        guilds = len(self.bot.guilds)
+        text = str(f"""```json\nJsem na {guilds} serverech.```""")
+        embed.add_field(name = "Na kolika serverech jsem?", value=text, inline=True)
+        
+        embed.set_footer(text = f"Zavolal: {author}")
+        
         await ctx.send(embed=embed)
 #---------------------------_ROLE_INFO_----------------------------
     @commands.command(aliases=["r", 'role'], 
@@ -154,7 +160,6 @@ class Info(commands.Cog):
         author = ctx.author.display_name
         guild = ctx.guild
 
-    
         name = guild.name
         g_id = guild.id
         icon_url = guild.icon_url
@@ -172,10 +177,8 @@ class Info(commands.Cog):
         roles = guild.roles
         role_count = len(roles)
         
-        
         TChannels = len(guild.text_channels)
         VChannels = len(guild.voice_channels)
-
 
         f = open(f"guilds/{guild.id}.json", "r")
         data = json.load(f)
