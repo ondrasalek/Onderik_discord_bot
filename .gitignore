@@ -3,3 +3,4 @@ test/
 .DS_Store
 DiscordBot/configuration.json
 *.json
+DiscordBot/configuration.json
