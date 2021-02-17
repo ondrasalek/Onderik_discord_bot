@@ -49,7 +49,7 @@ class Server(commands.Cog):
         await ctx.send(embed=embed)
 #-------------------------------_URL_--------------------------------
     @commands.command(aliases=["url","guild_url"],
-                    help = "Nastavit url serveru.",
+                    help = "Nastavit URL serveru.",
                     description="""
                                 * [set_guild_url] "None" ... Zruší URL *
                                 * [set_guild_url] "url" ... zobrazí aktuální URL *
@@ -120,7 +120,7 @@ class Server(commands.Cog):
         await ctx.send(embed=embed)
 #----------------------------_BOTLOG_----------------------------
     @commands.command(aliases=["bl","botlog"],
-					help = "Nastaví channel BOT LOG",
+					help = "Nastaví channel BOT-LOG",
                     description="""
                                 * [set_botlog] "None" ... Zruší aktuální botlog channel *
                                 * [set_botlog] "channel" ... zobrazí aktuální botlog channel *
