@@ -61,16 +61,7 @@ class Welcome(commands.Cog):
         wmsg = wmsg.replace("{url}",f"{url}")
         
         try:
-            if pmsg is None:
-                #Vítací zpráva
-                embedMSG = discord.Embed(
-                    #title = f"{guild.name}",
-                    description = wmsg,
-                    color = discord.Colour.purple()
-                )
-                embedMSG.set_author(name=guild.name, icon_url=icon_url)
-                embedMSG.set_thumbnail(url=icon_url)
-            else:
+            if pmsg is not None:
                 #Soukromá zpráva
                 embedPM = discord.Embed(
                     title=url,
@@ -79,6 +70,15 @@ class Welcome(commands.Cog):
                 )
                 embedPM.set_author(name=guild.name, icon_url=icon_url)
                 await member.send(embed=embedPM)
+                
+            #Vítací zpráva
+            embedMSG = discord.Embed(
+                #title = f"{guild.name}",
+                description = wmsg,
+                color = discord.Colour.purple()
+            )
+            embedMSG.set_author(name=guild.name, icon_url=icon_url)
+            embedMSG.set_thumbnail(url=icon_url)
 
         except Exception: 
             #Vítací zpráva
