@@ -8,13 +8,13 @@ class Clear(commands.Cog):
         self.bot = bot
 
     @commands.command(aliases=['cl','smazat'],
-					help = "Vymazat zprávy (max 1000).")
+					help = "Vymazat zprávy (max 333).")
 					
     @commands.has_permissions(manage_messages=True)
     async def clear(self, ctx, amount: int):
-        if amount > 1000:
-            amount = 1000
-            await ctx.send("```Maximálně lze smazat 1000 zpráv\nBudou smazány za 5 sekund!```")
+        if amount > 333:
+            amount = 333
+            await ctx.send("```Maximálně lze smazat 333 zpráv\nBudou smazány za 5 sekund!```")
             time.sleep(5)
 
         guild = ctx.guild
@@ -54,9 +54,6 @@ class Clear(commands.Cog):
             await ctx.send(embed=embed1)
 
         f.close()
-
-
-            
-            
+        
 def setup(bot):
     bot.add_cog(Clear(bot))

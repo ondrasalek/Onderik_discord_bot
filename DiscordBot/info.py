@@ -15,13 +15,11 @@ class Info(commands.Cog):
     async def info_bot(self, ctx):
         guild = ctx.guild
 
-        
         f = open("configuration.json", "r")
         data = json.load(f)
         prefix = data["prefix"]
         f.close()
         prikaz = f"{prefix}help"
-
 
         b_bot = ctx.bot.user
         name = b_bot.display_name
@@ -134,7 +132,6 @@ class Info(commands.Cog):
         avatar_url = username.avatar_url
         #status = username.status
         color: discord.Role = topRole
-
 
         author = ctx.author.display_name
 
