@@ -37,3 +37,5 @@ COMMANDS | ABOUT command | Arguments
 ## Examples
 ### .help
 ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
+### .clear
+![.clear](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
