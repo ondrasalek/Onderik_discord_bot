@@ -1,7 +1,7 @@
 # DiscordBot
 
 * Clear:
-   * `<clear>`           ...Delete number of messages (max 333).
+   * `.clear`           ...Delete number of messages (max 333).
 
 * Info:
    * `<info_bot>`        ...Info about BOT
