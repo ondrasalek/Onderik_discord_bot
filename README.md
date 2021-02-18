@@ -37,8 +37,8 @@ COMMANDS | ABOUT command | Arguments
 ## Examples
 COMMAND | IMAGE
 ------------- | -------------
-.help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
-.clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811947798064136243/unknown.png) ![clear1](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
+.help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811949364729348146/unknown.png)
+.clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811950913618313246/Snimek_obrazovky_2021-02-18_141552.png)
 
 
 [TOP](https://github.com/ondrasalek/DiscordBot/blob/master/README.md#discordbot)
