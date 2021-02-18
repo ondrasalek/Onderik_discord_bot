@@ -29,5 +29,8 @@ COMMANDS | ABOUT command | Arguments
 `.info_user` | Info about You | -----
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
 
- ##### .help
- ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
+
+
+## Examples
+### .help
+![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
