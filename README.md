@@ -2,10 +2,13 @@
 ## Commands
 ### for Admin
 1. Clear
+
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.clear <number>` | Delete number of messages (max 333) | Number (1-333)
+
 2. Server
+
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
@@ -17,6 +20,7 @@ COMMANDS | ABOUT command | Arguments
 
 ### for Everyone
 3. Info
+
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.info_bot` | Info about BOT | -----
