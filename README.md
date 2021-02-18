@@ -1,9 +1,8 @@
 # DiscordBot
+
+1. [Commands](https://github.com/ondrasalek/DiscordBot#for-admin)
+2. [Examples](https://github.com/ondrasalek/DiscordBot#for-everyone)
 ## Commands
-
-1. [for admins](https://github.com/ondrasalek/DiscordBot#for-admin)
-2. [for everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
-
 ### for Admin
 #### Server
 COMMANDS | ABOUT command | Arguments
