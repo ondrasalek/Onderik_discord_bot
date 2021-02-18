@@ -29,7 +29,7 @@ class Welcome(commands.Cog):
                 #Bye zpráva
                 embed = discord.Embed(
                     description = bmsg,
-                    color = discord.Colour.purple()
+                    color = discord.Colour.dark_red()
                 )
                 embed.set_author(name=guild.name, icon_url=icon_url)
                 try:
