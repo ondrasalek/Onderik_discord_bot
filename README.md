@@ -1,8 +1,8 @@
 # DiscordBot
 ## Commands
-1. clear [clear](https://github.com/ondrasalek/DiscordBot#clear)
-2. server [server](https://github.com/ondrasalek/DiscordBot#server)
-3. info [info](https://github.com/ondrasalek/DiscordBot#info)
+1. [clear](https://github.com/ondrasalek/DiscordBot#clear)
+2. [server](https://github.com/ondrasalek/DiscordBot#server)
+3. [info](https://github.com/ondrasalek/DiscordBot#info)
 
 ### for Admin
 #### Clear
