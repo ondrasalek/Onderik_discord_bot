@@ -8,7 +8,7 @@
 ## Commands
 ### for Admin
 #### Server
-COMMANDS | ABOUT command | Arguments
+COMMAND | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
 `.set_botlog <channel>` | Setting channel BotLog | `<channel name / id / #mention>` & `"now"`
