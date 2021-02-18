@@ -35,14 +35,10 @@ COMMANDS | ABOUT command | Arguments
 
 
 ## Examples
-### .help
-![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
-![clear1](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
-![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811947798064136243/unknown.png)
-### .clear
 COMMAND | IMAGE
 ------------- | -------------
-### .help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
-### .clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811947798064136243/unknown.png) ![clear1](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
+.help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
+.clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811947798064136243/unknown.png) ![clear1](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
 
 
+[TOP](https://github.com/ondrasalek/DiscordBot/blob/master/README.md#discordbot)
