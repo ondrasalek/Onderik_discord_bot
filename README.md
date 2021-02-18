@@ -1,7 +1,7 @@
 # DiscordBot
 
 1. Clear:
-       -clear           ...Vymazat zprávy (max 1000).
+       -clear           ...Vymazat zprávy (max 333).
 
 2. Info:
        -info_bot        ...Info o BOTu.
