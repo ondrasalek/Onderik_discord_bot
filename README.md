@@ -1,6 +1,6 @@
 # DiscordBot
 
-SECTION | COMMAND | ABOUT it | Arguments
+SECTIONS | COMMANDS | ABOUT command | Arguments
 ------------ | ------------- | ------------- | -------------
 Clear | `.clear <number>` | Delete number of messages (max 333) | Number (1-333)
 Info | `.info_bot` | Info about BOT | -----
