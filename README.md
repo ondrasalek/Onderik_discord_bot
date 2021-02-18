@@ -9,7 +9,7 @@ COMMANDS | ABOUT command | Arguments
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
-`.set_botlog <channel>` | Setting channel BotLog (just giving info about in what text channel were deleted number of messages) | `<channel name / id / #mention>` & `"now"`
+`.set_botlog <channel>` | Setting channel BotLog (just giving info about in                                                                                         what text channel were deleted number of messages) | `<channel name / id / #mention>` & `"now"`
 `.set_guild_url <url>` | Setting url link to server | `"<url>"` & `"now"`
 `.set_msg_private <message>` | Setting Private welcome message (max 255 chars) | `"<message>"` & `"now"`
 `.set_msg_welcome <message>` | Setting Channel Welcome message (max 255 chars) | `"<message>"` & `"now"`
