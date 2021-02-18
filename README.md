@@ -23,5 +23,7 @@
 
 SECTION | COMMAND | ABOUT it
 ------------ | ------------- | -------------
-CLEAR | `.clear <number>` | Delete number of messages (max 333)
-INFO | `.info_bot`  | Info about BOT
+Clear | `.clear <number>` | Delete number of messages (max 333)
+Info | `.info_bot`  | Info about BOT
+------------ | ------------- | -------------
+Server | `.set_autorole <role>` | Setting auto role
