@@ -19,6 +19,16 @@ with open("configuration.json", "r") as config:
 	prefix = data["prefix"]
 	
 prikaz = f"{prefix}help"
+
+guild_dict ={
+					"GuildID": guild.id, 
+					"Autorole": "",
+					"URL": "", 
+					"BotLog": "",
+					"WelcomeMSG": "Ahoj {user}, vítej na serveru **{server}**!" 
+					"PrivateMSG": "",
+					 "ByeMSG": ""
+					}
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
@@ -50,10 +60,6 @@ async def on_ready():
 	#------------------------------------------------------------------
     guilds = bot.guilds
     for guild in guilds:
-        guild_dict = {
-					"GuildID":guild.id,
-					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!"
-					}
         try:
             f = open(f"guilds/{guild.id}.json", "r")
             data = json.load(f)
@@ -65,10 +71,6 @@ async def on_ready():
 async def on_guild_join(ctx):
     guilds = bot.guilds
     for guild in guilds:
-        guild_dict = {
-					"GuildID":guild.id,
-					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!"
-					}
         try:
             f = open(f"guilds/{guild.id}.json", "r")
             data = json.load(f)
