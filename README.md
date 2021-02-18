@@ -7,10 +7,10 @@
    * `.info_bot`        ...Info about BOT
    * `.info_channel`    ...Info about Channel
    * `.info_role`       ...List of Roles
-   ** `.info_role <role>`...List of members if Role
+       ** `.info_role <role>`...List of members if Role
    * `.info_server`    ...Info about Server
    * `.info_user`      ...Info about You
-   ** `.info_user <nick>`...Info about Member
+       ** `.info_user <nick>`...Info about Member
 
 
 * Server:
