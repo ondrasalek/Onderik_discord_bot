@@ -4,6 +4,7 @@
 1. [for admins](https://github.com/ondrasalek/DiscordBot#for-admin)
 2. [for everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
 
+
 ### for Admin
 #### Server
 COMMANDS | ABOUT command | Arguments
@@ -28,3 +29,5 @@ COMMANDS | ABOUT command | Arguments
 `.info_role <role>` | List of members if Role | `<role name / id / @mention>`
 `.info_user` | Info about You | -----
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
+
+ `.help`![.help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
