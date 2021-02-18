@@ -28,12 +28,12 @@ bot = commands.Bot(command_prefix=[prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
-	"clear",
-	"server",
-	"info",
-	"onCommandError",
-	"msg_welcome",
-    "msg_bye"
+	"cogs.clear",
+	"cogs.server",
+	"cogs.info",
+	"cogs.onCommandError",
+	"cogs.msg_welcome",
+    "cogs.msg_bye"
 ]
 if __name__ == '__main__':
 	for extension in initial_extensions:
