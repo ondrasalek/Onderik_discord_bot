@@ -1,5 +1,9 @@
 # DiscordBot
 ## Commands
+1. clear
+2. server
+3. info
+
 ### for Admin
 #### Clear
 COMMANDS | ABOUT command | Arguments
