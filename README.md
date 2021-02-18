@@ -1,15 +1,9 @@
 # DiscordBot
 ## Commands
-1. [clear](https://github.com/ondrasalek/DiscordBot#clear)
-2. [server](https://github.com/ondrasalek/DiscordBot#server)
-3. [info](https://github.com/ondrasalek/DiscordBot#info)
+1. [admin](https://github.com/ondrasalek/DiscordBot#server)
+2. [everyone](https://github.com/ondrasalek/DiscordBot#info)
 
 ### for Admin
-#### Clear
-COMMANDS | ABOUT command | Arguments
-------------- | ------------- | -------------
-`.clear <number>` | Delete number of messages (max 333) | Number (1-333)
-
 #### Server
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -19,6 +13,9 @@ COMMANDS | ABOUT command | Arguments
 `.set_msg_private <message>` | Setting Private welcome message (max 255 chars) | `"<message>"` & `"now"`
 `.set_msg_welcome <message>` | Setting Channel Welcome message (max 255 chars) | `"<message>"` & `"now"`
 `.set_msg_bye <message>` | Setting Channel Bye message (max 255 chars) | `"<message>"` & `"now"`
+COMMANDS | ABOUT command | Arguments
+------------- | ------------- | -------------
+`.clear <number>` | Delete number of messages (max 333) | Number (1-333)
 
 ### for Everyone
 #### Info
