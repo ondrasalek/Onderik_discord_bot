@@ -1,7 +1,7 @@
 # DiscordBot
 
 * Clear:
-   * `.clear <number>`           ...Delete number of messages (max 333).
+   * `.clear <number>`           ...Delete number of messages (max 333)
 
 * Info:
    * `.info_bot`        ...Info about BOT
@@ -21,7 +21,7 @@
    * `.set_msg_welcome <message>`...Setting Channel Welcome message (max 255 chars)
    * `.set_msg_bye <message>`    ...Setting Channel Bye message (max 255 chars)
 
-COMMAND | ABOUT COMMAND
------------- | -------------
-`.clear <number>` | Info about BOT
-Content in the first column | Content in the second column
+SECTION | COMMAND | ABOUT it
+------------ | ------------- | -------------
+CLEAR | `.clear <number>` | Delete number of messages (max 333)
+INFO | `.info_bot`  | Info about BOT
