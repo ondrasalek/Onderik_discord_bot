@@ -1,5 +1,5 @@
 # DiscordBot
-##Commands
+## Commands
 ### for Admin
 #### Clear
 COMMANDS | ABOUT command | Arguments
