@@ -1,11 +1,11 @@
 # DiscordBot
 ## Commands
 ### for Admin
-#### Clear
+1. Clear
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.clear <number>` | Delete number of messages (max 333) | Number (1-333)
-#### Server
+2. Server
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
@@ -16,7 +16,7 @@ COMMANDS | ABOUT command | Arguments
 `.set_msg_bye <message>` | Setting Channel Bye message (max 255 chars) | `"<message>"` & `"now"`
 
 ### for Everyone
-#### Info
+3. Info
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.info_bot` | Info about BOT | -----
