@@ -17,11 +17,3 @@
    * `<set_msg_private>` ...Nastavit Privátní welcome zprávu (max 255 znaků).
    * `<set_msg_welcome>` ...Nastavit Welcome zprávu (max 255 znaků).
    * `<set_msg_bye>`     ...Nastavit Bye zprávu (max 255 znaků).
-```javascript
-def foo():
-    if not bar:
-        return True
-```
-    def foo():
-        if not bar:
-            return True
