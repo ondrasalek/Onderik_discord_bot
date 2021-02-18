@@ -455,8 +455,8 @@ class Server(commands.Cog):
                                 Member ... {user}
                                 Server ... {server}
 
-                                * [set_bye] "None" ... zruší bye zprávu *
-                                * [set_bye] "message" ... zobrazí aktuální zprávu *
+                                * [set_msg_bye] "None" ... zruší bye zprávu *
+                                * [set_msg_bye] "message" ... zobrazí aktuální zprávu *
                                 """
                     )
     @commands.has_permissions(administrator = True)
