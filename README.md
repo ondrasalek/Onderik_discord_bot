@@ -4,7 +4,8 @@
     1. [for Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
     2. [for Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
 2. [Examples](https://github.com/ondrasalek/DiscordBot#examples)
-
+    1.[.help](https://github.com/ondrasalek/DiscordBot#help)
+    2.[.help](https://github.com/ondrasalek/DiscordBot#help)
 ## Commands
 ### for Admin
 #### Server
