@@ -20,3 +20,8 @@
    * `.set_msg_private <message>`...Setting Private welcome message (max 255 chars)
    * `.set_msg_welcome <message>`...Setting Channel Welcome message (max 255 chars)
    * `.set_msg_bye <message>`    ...Setting Channel Bye message (max 255 chars)
+
+COMMAND | ABOUT COMMAND
+------------ | -------------
+`.clear <number>` | Info about BOT
+Content in the first column | Content in the second column
