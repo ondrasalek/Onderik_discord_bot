@@ -5,7 +5,7 @@
     - [for Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
 2. [Examples](https://github.com/ondrasalek/DiscordBot#examples)
     - [.help](https://github.com/ondrasalek/DiscordBot#help)
-    - [.help](https://github.com/ondrasalek/DiscordBot#help)
+    - [.clear](https://github.com/ondrasalek/DiscordBot#clear)
 ## Commands
 ### for Admin
 #### Server
@@ -38,4 +38,6 @@ COMMANDS | ABOUT command | Arguments
 ### .help
 ![help](https://cdn.discordapp.com/attachments/803664917030633522/811944971518345216/unknown.png)
 ### .clear
-![.clear](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
+![clear1](https://cdn.discordapp.com/attachments/804798849780678697/811947521945370645/unknown.png)
+![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811947798064136243/unknown.png)
+
