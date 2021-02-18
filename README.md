@@ -2,7 +2,7 @@
 
 SECTIONS | COMMANDS | ABOUT command | Arguments
 ------------ | ------------- | ------------- | -------------
-Clear | ```javascript.clear <number>``` | Delete number of messages (max 333) | Number (1-333)
+Clear | ```javascript .clear <number> ``` | Delete number of messages (max 333) | Number (1-333)
 Info | `.info_bot` | Info about BOT | -----
 . | `.info_channel` | Info about Channel | -----
 . | `.info_server` | Info about Server | -----
