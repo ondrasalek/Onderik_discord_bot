@@ -16,8 +16,8 @@ COMMANDS | ABOUT command | Arguments
 `.set_msg_bye <message>` | Setting Channel Bye message (max 255 chars) | `"<message>"` & `"now"`
 ## Command for Everyone
 ### Info
-SECTIONS | COMMANDS | ABOUT command | Arguments
------------- | ------------- | ------------- | -------------
+COMMANDS | ABOUT command | Arguments
+------------- | ------------- | -------------
 `.info_bot` | Info about BOT | -----
 `.info_channel` | Info about Channel | -----
 `.info_server` | Info about Server | -----
