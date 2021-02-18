@@ -32,7 +32,8 @@ initial_extensions = [
 	"server",
 	"info",
 	"onCommandError",
-	"welcome"
+	"msg_welcome",
+    "msg_bye"
 ]
 if __name__ == '__main__':
 	for extension in initial_extensions:
@@ -51,7 +52,8 @@ async def on_ready():
     for guild in guilds:
         guild_dict = {
 					"GuildID":guild.id,
-					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!"
+					"WelcomeMSG":"Ahoj {user}, vítej na serveru **{server}**!",
+                    "Bye":"0"
 					}
         try:
             f = open(f"guilds/{guild.id}.json", "r")

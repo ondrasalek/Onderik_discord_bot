@@ -206,6 +206,7 @@ class Server(commands.Cog):
                                 Owner ... {owner}
                                 Url ... {url}
                                 
+                                * [set_msg_welcome] "None" ... nastaví na defaultní zprávu *
                                 * [set_msg_welcome] "message" ... zobrazí aktuální zprávu *
                                 """
                     )
@@ -322,6 +323,7 @@ class Server(commands.Cog):
                                 Owner ... {owner}
                                 Url ... {url}
                                 
+                                * [set_msg_private] "None" ... zruší private zprávu *
                                 * [set_msg_private] "message" ... zobrazí aktuální zprávu *
                                 """
                     )
@@ -331,7 +333,7 @@ class Server(commands.Cog):
         author = ctx.author
         owner = guild.owner.mention
 
-        if message == "None" or message == "" or message == "default":
+        if message == "None" or message == "":
             pm = None
             f = open(f"guilds/{guild.id}.json", "r+") 
             data = json.load(f)
@@ -438,6 +440,113 @@ class Server(commands.Cog):
                     embedW.set_author(name=guild.name, icon_url=icon_url)
 
                     await ctx.send(embed=embedW)
+                else:
+                    embed= discord.Embed(
+                            title = "Zpráva je moc dlouhá.",
+                            description = f"{len(message)} znaků!",
+                            color = discord.Colour.dark_red()
+                            )
+                    await ctx.send(embed=embed)
+#----------------------------_Bye_----------------------------
+    @commands.command(aliases=["bmsg",],
+					help = "Nastavit Bye zprávu (max 255 znaků).",
+                    description="""
+                                Můžete použít:
+                                Member ... {user}
+                                Server ... {server}
+
+                                * [set_bye] "None" ... zruší bye zprávu *
+                                * [set_bye] "message" ... zobrazí aktuální zprávu *
+                                """
+                    )
+    @commands.has_permissions(administrator = True)
+    async def set_msg_bye(self, ctx, message: str):
+        guild = ctx.guild
+        author = ctx.author
+        owner = guild.owner.mention
+
+        if message == "None" or message == "":  
+            bm = None
+            
+            f = open(f"guilds/{guild.id}.json", "r+") 
+            data = json.load(f)
+            data["ByeMSG"] = ""
+            f.seek(0)
+            json.dump(data, f)
+            f.truncate()
+            f.close()
+            
+            embed = discord.Embed(
+                        color = randint(0, 0xffffff)
+                    )
+            embed.add_field(name="Bye zpráva je __zrušena__:", value=bm, inline=False)
+            await ctx.send(embed=embed)
+        else:
+            if message == "message" or message == "now":
+                f = open(f"guilds/{guild.id}.json", "r")
+                data = json.load(f)
+                    
+                try:
+                    message = data["ByeMSG"]
+                    if message == "":
+                        message = "Nothing"
+                        embed = discord.Embed(
+                            title = "AKTUÁLNĚ",
+                            description = message,
+                            color = discord.Colour.gold()
+                            )
+                        await ctx.send(embed=embed)
+                    else:
+                        message = message.replace("{user}",f"{author.mention}")
+                        message = message.replace("{server}",f"{guild.name}")
+                        
+                        icon_url = guild.icon_url
+
+                        embed = discord.Embed(
+                            title = "AKTUÁLNĚ",
+                            color = discord.Colour.gold()
+                            )
+                        await ctx.send(embed=embed)
+                        
+                        embedW = discord.Embed(
+                            description = message,
+                            color = discord.Colour.gold()
+                            )
+                        embedW.set_author(name=guild.name, icon_url=icon_url)
+
+                        await ctx.send(embed=embedW)
+                except:
+                    pass
+                f.close()
+            else:
+                if len(message) < 333:
+                    f = open(f"guilds/{guild.id}.json", "r+") 
+                    data = json.load(f)
+                    data["ByeMSG"] = message
+                    f.seek(0)
+                    json.dump(data, f)
+                    f.truncate()
+                    f.close()
+                    
+                    embed = discord.Embed(
+                                color = randint(0, 0xffffff)
+                            )
+                    embed.add_field(name="Bye zpráva je nastavena na:", value=message, inline=False)
+                    embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
+                    await ctx.send(embed=embed)
+                    
+                    message = message.replace("{user}",f"{author.mention}")
+                    message = message.replace("{server}",f"{guild.name}")
+                    
+                    icon_url = guild.icon_url
+
+                    embedB = discord.Embed(
+                        description = message,
+                        color = discord.Colour.purple()
+                        )
+                    embedB.set_author(name=guild.name, icon_url=icon_url)
+
+                    await ctx.send(embed=embedB)
                 else:
                     embed= discord.Embed(
                             title = "Zpráva je moc dlouhá.",
