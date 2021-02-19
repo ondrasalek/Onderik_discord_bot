@@ -215,7 +215,8 @@ class Server(commands.Cog):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
-
+        wcolor = 0xfafafa
+        
         if message == "None" or message == "" or message == "default":
             wm = "Ahoj {user}, vítej na serveru **{server}**!"
             
@@ -228,7 +229,7 @@ class Server(commands.Cog):
             f.close()
             
             embed = discord.Embed(
-                        color = randint(0, 0xffffff)
+                        color = wcolor
                     )
             embed.add_field(name="Welcome zpráva je nastavena na __základní__:", value=wm, inline=False)
             await ctx.send(embed=embed)
@@ -261,7 +262,7 @@ class Server(commands.Cog):
                 
                 embedW = discord.Embed(
                     description = message,
-                    color = discord.Colour.gold()
+                    color = wcolor
                     )
                 embedW.set_author(name=guild.name, icon_url=icon_url)
                 embedW.set_thumbnail(url=icon_url)
@@ -300,7 +301,7 @@ class Server(commands.Cog):
 
                     embedW = discord.Embed(
                         description = message,
-                        color = discord.Colour.purple()
+                        color = wcolor
                         )
                     embedW.set_author(name=guild.name, icon_url=icon_url)
                     embedW.set_thumbnail(url=icon_url)
@@ -332,7 +333,8 @@ class Server(commands.Cog):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
-
+        pcolor = 0xa4edd1
+        
         if message == "None" or message == "":
             pm = None
             f = open(f"guilds/{guild.id}.json", "r+") 
@@ -344,7 +346,7 @@ class Server(commands.Cog):
             f.close()
             
             embed = discord.Embed(
-                        color = randint(0, 0xffffff)
+                        color = pcolor
                     )
             embed.add_field(name="Private welcome zpráva je __zrušena__:", value=pm, inline=False)
             await ctx.send(embed=embed)
@@ -386,7 +388,7 @@ class Server(commands.Cog):
                         
                         embedW = discord.Embed(
                             description = message,
-                            color = discord.Colour.gold()
+                            color = pcolor
                             )
                         embedW.set_author(name=guild.name, icon_url=icon_url)
 
@@ -420,7 +422,7 @@ class Server(commands.Cog):
                     f.close()
                     
                     embed = discord.Embed(
-                                color = randint(0, 0xffffff)
+                                color = discord.Colour.gold()
                             )
                     embed.add_field(name="Private welcome zpráva je nastavena na:", value=message, inline=False)
                     embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
@@ -435,7 +437,7 @@ class Server(commands.Cog):
 
                     embedW = discord.Embed(
                         description = message,
-                        color = discord.Colour.purple()
+                        color = pcolor
                         )
                     embedW.set_author(name=guild.name, icon_url=icon_url)
 
@@ -482,6 +484,8 @@ class Server(commands.Cog):
             embed.add_field(name="Bye zpráva je __zrušena__:", value=bm, inline=False)
             await ctx.send(embed=embed)
         else:
+            bcolor = 0x000000
+
             if message == "message" or message == "now":
                 f = open(f"guilds/{guild.id}.json", "r")
                 data = json.load(f)
@@ -529,7 +533,7 @@ class Server(commands.Cog):
                     f.close()
                     
                     embed = discord.Embed(
-                                color = randint(0, 0xffffff)
+                                color = discord.Colour.gold()
                             )
                     embed.add_field(name="Bye zpráva je nastavena na:", value=message, inline=False)
                     embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
@@ -542,7 +546,7 @@ class Server(commands.Cog):
 
                     embedB = discord.Embed(
                         description = message,
-                        color = discord.Colour.purple()
+                        color = bcolor
                         )
                     embedB.set_author(name=guild.name, icon_url=icon_url)
 

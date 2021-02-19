@@ -17,7 +17,7 @@ class Welcome(commands.Cog):
         # autorole
         f = open(f"guilds/{guild.id}.json", "r")
         data = json.load(f)
-
+        bcolor = 0x000000
         try:
             bmsg = data["ByeMSG"]
             if bmsg == "":

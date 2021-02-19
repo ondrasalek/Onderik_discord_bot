@@ -60,13 +60,15 @@ class Welcome(commands.Cog):
         wmsg = wmsg.replace("{owner}",f"{owner}")
         wmsg = wmsg.replace("{url}",f"{url}")
         
+        wcolor = 0xfafafa
+        pcolor = 0xa4edd1
         try:
             if pmsg is not None:
                 #Soukromá zpráva
                 embedPM = discord.Embed(
                     title=url,
                     description=pmsg,
-                    color = discord.Colour.green()
+                    color = pcolor
                 )
                 embedPM.set_author(name=guild.name, icon_url=icon_url)
                 await member.send(embed=embedPM)
@@ -75,7 +77,7 @@ class Welcome(commands.Cog):
             embedMSG = discord.Embed(
                 #title = f"{guild.name}",
                 description = wmsg,
-                color = discord.Colour.purple()
+                color = wcolor
             )
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
             embedMSG.set_thumbnail(url=icon_url)
@@ -85,7 +87,7 @@ class Welcome(commands.Cog):
             embedMSG = discord.Embed(
                 #title = f"{guild.name}",
                 description = wmsg,
-                color = discord.Colour.purple()
+                color = wcolor
             )
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
             embedMSG.set_thumbnail(url=icon_url)
