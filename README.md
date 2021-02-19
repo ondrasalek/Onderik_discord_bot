@@ -31,8 +31,6 @@ COMMANDS | ABOUT command | Arguments
 `.info_user` | Info about You | .
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
 
-
-
 ## Examples
 COMMAND | IMAGE
 ------------- | -------------
