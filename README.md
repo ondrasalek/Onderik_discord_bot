@@ -39,5 +39,4 @@ COMMAND | IMAGE
 .help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811949364729348146/unknown.png)
 .clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811950913618313246/Snimek_obrazovky_2021-02-18_141552.png)
 
-
 [TOP](https://github.com/ondrasalek/DiscordBot/blob/master/README.md#discordbot)
