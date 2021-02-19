@@ -514,7 +514,7 @@ class Server(commands.Cog):
                         
                         embedW = discord.Embed(
                             description = message,
-                            color = discord.Colour.gold()
+                            color = bcolor
                             )
                         embedW.set_author(name=guild.name, icon_url=icon_url)
 
