@@ -3,6 +3,8 @@ from discord.ext import commands
 import time
 import datetime
 import json
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 class Clear(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

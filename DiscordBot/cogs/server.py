@@ -3,7 +3,8 @@ from discord.ext import commands
 import json
 from random import randint
 import validators
-
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 class Server(commands.Cog):
     def __init__(self, bot):
         self.bot = bot

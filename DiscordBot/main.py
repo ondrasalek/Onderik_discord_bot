@@ -7,9 +7,8 @@ Created on Tue Jan 26 21:44:42 2021
 """
 #------------------------------------------------------------------
 import discord
-from discord.ext import commands,tasks
+from discord.ext import commands
 import json
-from itertools import cycle
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 # Get configuration.json
@@ -39,7 +38,7 @@ if __name__ == '__main__':
 	for extension in initial_extensions:
 		try:
 			bot.load_extension(extension)
-		except Exception as e:
+		except Exception:
 			print(f"Failed to load extension {extension}")
 #-----------------------_ON_READY_---------------------------------
 @bot.event

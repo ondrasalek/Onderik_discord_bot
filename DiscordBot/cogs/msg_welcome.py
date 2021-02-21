@@ -1,8 +1,8 @@
 import discord
 from discord.ext import commands
-import datetime
 import json
-
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 class Welcome(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
