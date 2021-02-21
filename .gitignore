@@ -5,3 +5,4 @@ DiscordBot/configuration.json
 *.json
 *.pyc
 
+*.ini
