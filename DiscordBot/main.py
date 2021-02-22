@@ -82,7 +82,6 @@ async def on_guild_join(ctx):
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
         f.close()
-
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)
