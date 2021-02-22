@@ -22,7 +22,6 @@ prikaz = f"{prefix}help"
 # Intents
 intents = discord.Intents.default()
 intents.members = True
-
 bot = commands.Bot(command_prefix=[prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
@@ -60,7 +59,6 @@ async def on_ready():
 					}
         try:
             f = open(f"guilds/{guild.id}.json", "r")
-            data = json.load(f)
         except:
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
@@ -80,7 +78,6 @@ async def on_guild_join(ctx):
         			}
         try:
             f = open(f"guilds/{guild.id}.json", "r")
-            data = json.load(f)
         except:
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
