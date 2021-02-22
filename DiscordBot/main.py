@@ -63,6 +63,7 @@ async def on_ready():
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f)
         f.close()
+#-----------------------_ON_JOIN_---------------------------------
 @bot.event
 async def on_guild_join(ctx):
     guilds = bot.guilds
