@@ -80,7 +80,7 @@ class Server(commands.Cog):
                     url = data["URL"]
                     if url == "":
                         url = None
-                except:
+                except KeyError:
                     url = None
                 f.close() 
                 
@@ -154,7 +154,7 @@ class Server(commands.Cog):
                     else:
                         botlog = discord.utils.get(guild.channels, id=botlog)
                         botlog=botlog.mention
-                except:
+                except KeyError:
                     botlog = None
                 f.close() 
                 
@@ -245,7 +245,7 @@ class Server(commands.Cog):
                     url = data["URL"]
                     if url == "":
                         url = None
-                except:
+                except KeyError:
                     url = None
                 f.close() 
                 message = message.replace("{user}",f"{author.mention}")
@@ -282,7 +282,7 @@ class Server(commands.Cog):
                         url = data["URL"]
                         if url == "":
                             url = None
-                    except:
+                    except KeyError:
                         url = None
                     f.close()
                     
@@ -360,7 +360,7 @@ class Server(commands.Cog):
                     url = data["URL"]
                     if url == "":
                         url = None
-                except:
+                except KeyError:
                     url = None
                     
                 try:
@@ -395,7 +395,7 @@ class Server(commands.Cog):
 
                         await ctx.send(embed=embedW)
                         
-                except:
+                except KeyError:
                     message = "Nothing"
                     embed = discord.Embed(
                             title = "AKTUÁLNĚ",
@@ -418,7 +418,7 @@ class Server(commands.Cog):
                         url = data["URL"]
                         if url == "":
                             url = None
-                    except:
+                    except KeyError:
                         url = None
                     f.close()
                     
@@ -520,7 +520,7 @@ class Server(commands.Cog):
                         embedW.set_author(name=guild.name, icon_url=icon_url)
 
                         await ctx.send(embed=embedW)
-                except:
+                except KeyError:
                     pass
                 f.close()
             else:

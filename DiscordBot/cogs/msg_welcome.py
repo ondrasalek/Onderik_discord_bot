@@ -25,7 +25,7 @@ class Welcome(commands.Cog):
                 autorole = discord.utils.get(guild.roles, id=autorole)
                 try:     
                     await member.add_roles(autorole)
-                except Exception:
+                except:
                     pass
         except KeyError:
             pass
