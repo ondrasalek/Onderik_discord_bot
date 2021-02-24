@@ -1,10 +1,8 @@
 # DiscordBot
-
 1. [Commands](https://github.com/ondrasalek/DiscordBot#commands)
+    - [Examples](https://github.com/ondrasalek/DiscordBot#examples)
     1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
     2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
-    - [Examples](https://github.com/ondrasalek/DiscordBot#examples)
-
 ## Commands `.help <command>`
 ### Admin
 #### Server
