@@ -1,12 +1,12 @@
 # DiscordBot
 
 1. [Commands](https://github.com/ondrasalek/DiscordBot#commands)
-    1. [for Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
-    2. [for Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
+    1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
+    2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
     - [Examples](https://github.com/ondrasalek/DiscordBot#examples)
 
 ## Commands
-### for Admin
+### Admin
 #### Server
 COMMAND | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -19,7 +19,7 @@ COMMAND | ABOUT command | Arguments
 . | . | .
 `.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)
 
-### for Everyone
+### Everyone
 #### Info
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
