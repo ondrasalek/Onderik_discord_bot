@@ -24,7 +24,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["Autorole"] = ""
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
 
@@ -39,7 +39,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["Autorole"] = roleId
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
             embed = discord.Embed(
@@ -64,7 +64,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["URL"] = ""
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
 
@@ -97,7 +97,7 @@ class Server(commands.Cog):
                         data = json.load(f)
                         data["URL"] = url
                         f.seek(0)
-                        json.dump(data, f)
+                        json.dump(data, f, indent=4)
                         f.truncate()
                         f.close()
 
@@ -135,7 +135,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["BotLog"] = ""
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
 
@@ -177,7 +177,7 @@ class Server(commands.Cog):
                         data = json.load(f)
                         data["BotLog"] = bl.id
                         f.seek(0)
-                        json.dump(data, f)
+                        json.dump(data, f, indent=4)
                         f.truncate()
                         f.close()
                         embed = discord.Embed(
@@ -225,7 +225,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["WelcomeMSG"] = wm
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
             
@@ -275,7 +275,7 @@ class Server(commands.Cog):
                     data = json.load(f)
                     data["WelcomeMSG"] = message
                     f.seek(0)
-                    json.dump(data, f)
+                    json.dump(data, f, indent=4)
                     f.truncate()
                     
                     try:
@@ -342,7 +342,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["PrivateMSG"] = ""
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
             
@@ -411,7 +411,7 @@ class Server(commands.Cog):
                     data = json.load(f)
                     data["PrivateMSG"] = message
                     f.seek(0)
-                    json.dump(data, f)
+                    json.dump(data, f, indent=4)
                     f.truncate()
                     
                     try:
@@ -475,7 +475,7 @@ class Server(commands.Cog):
             data = json.load(f)
             data["ByeMSG"] = ""
             f.seek(0)
-            json.dump(data, f)
+            json.dump(data, f, indent=4)
             f.truncate()
             f.close()
             
@@ -529,7 +529,7 @@ class Server(commands.Cog):
                     data = json.load(f)
                     data["ByeMSG"] = message
                     f.seek(0)
-                    json.dump(data, f)
+                    json.dump(data, f, indent=4)
                     f.truncate()
                     f.close()
                     

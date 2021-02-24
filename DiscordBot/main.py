@@ -62,7 +62,7 @@ async def on_ready():
             f = open(f"guilds/{guild.id}.json", "r")
         except:
             f = open(f"guilds/{guild.id}.json", "w")
-            json.dump(guild_dict, f)
+            json.dump(guild_dict, f, indent=4)
         f.close()
 @bot.event
 async def on_guild_join(ctx):
@@ -81,7 +81,7 @@ async def on_guild_join(ctx):
             f = open(f"guilds/{guild.id}.json", "r")
         except:
             f = open(f"guilds/{guild.id}.json", "w")
-            json.dump(guild_dict, f)
+            json.dump(guild_dict, f, indent=4)
         f.close()
 #------------------------------------------------------------------
 #------------------------------------------------------------------
