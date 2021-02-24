@@ -5,7 +5,7 @@
     2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
     - [Examples](https://github.com/ondrasalek/DiscordBot#examples)
 
-## Commands
+## Commands `.help <command>`
 ### Admin
 #### Server
 COMMAND | ABOUT command | Arguments
