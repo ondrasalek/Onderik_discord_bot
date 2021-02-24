@@ -47,7 +47,7 @@ class Info(commands.Cog):
                 autorole = discord.utils.get(guild.roles, id=autorole)
                 autorole = autorole.mention
                 embed.add_field(name='Automatícká role:', value=autorole, inline=False)
-        except:
+        except KeyError:
             autorole=None
         try:
             botlog = data["BotLog"]
@@ -57,7 +57,7 @@ class Info(commands.Cog):
                 botlog = discord.utils.get(guild.channels, id=botlog)
                 botlog=botlog.mention
                 embed.add_field(name='BotLog Channel', value=botlog, inline=False)
-        except:
+        except KeyError:
             botlog = None
         f.close()
 
@@ -183,7 +183,7 @@ class Info(commands.Cog):
             url = data["URL"]
             if url == "":
                 url = None
-        except:
+        except KeyError:
             url = None
             
         embed = discord.Embed(
@@ -224,7 +224,7 @@ class Info(commands.Cog):
                 autorole = discord.utils.get(guild.roles, id=autorole)
                 autorole = autorole.mention
                 embed.add_field(name='Automatícká role:', value=autorole, inline=False)
-        except:
+        except KeyError:
             autorole = None
         f.close()
 

@@ -27,19 +27,19 @@ class Welcome(commands.Cog):
                     await member.add_roles(autorole)
                 except Exception:
                     pass
-        except Exception:
+        except KeyError:
             pass
 
         try:
             url = data["URL"]
             if url == "":
                 url = None
-        except:
+        except KeyError:
             url = None
             
         try:
             wmsg = data["WelcomeMSG"]
-        except:
+        except KeyError:
             wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
 
         try:
@@ -51,7 +51,7 @@ class Welcome(commands.Cog):
                 pmsg = pmsg.replace("{server}",f"{guild.name}")
                 pmsg = pmsg.replace("{owner}",f"{owner}")
                 pmsg = pmsg.replace("{url}",f"{url}")
-        except:
+        except KeyError:
             pmsg = None
         f.close()
         
@@ -82,7 +82,7 @@ class Welcome(commands.Cog):
             embedMSG.set_author(name=guild.name, icon_url=icon_url)
             embedMSG.set_thumbnail(url=icon_url)
 
-        except Exception: 
+        except: 
             #Vítací zpráva
             embedMSG = discord.Embed(
                 #title = f"{guild.name}",

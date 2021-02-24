@@ -37,7 +37,7 @@ class Welcome(commands.Cog):
                     await channel.send(embed=embed)
                 except:
                     pass
-        except:
+        except KeyError:
             bmsg = None
         f.close()
         
