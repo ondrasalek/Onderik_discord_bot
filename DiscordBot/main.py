@@ -41,11 +41,12 @@ if __name__ == '__main__':
 		except Exception:
 			print(f"Failed to load extension {extension}")
 #-----------------------_ON_READY_---------------------------------
+game = discord.Game(name=f"🤖{prikaz}🤖")
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} online 🟢')
     print(f"Discord verze: {discord.__version__}")
-    await bot.change_presence(activity=discord.Game(name=f"🤖{prikaz}🤖"))
+    await bot.change_presence(activity=game)
 	#------------------------------------------------------------------
     guilds = bot.guilds
     for guild in guilds:
