@@ -1,1 +1,9 @@
-{"GuildID": 793585025999437834, "Autorole": "", "URL": "", "BotLog": "", "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru **{server}**!", "PrivateMSG": "", "ByeMSG": ""}
+{
+    "GuildID": 793585025999437834, 
+    "Autorole": "", 
+    "URL": "", 
+    "BotLog": "", 
+    "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru **{server}**!", 
+    "PrivateMSG": "", 
+    "ByeMSG": ""
+}
