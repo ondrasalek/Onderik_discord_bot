@@ -16,7 +16,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_autorole(self, ctx, role: discord.Role = None):
+    async def set_autorole(self, ctx, *,role: discord.Role = None):
         guild = ctx.guild
         roles = guild.roles
         if role is None:
@@ -57,7 +57,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_guild_url(self, ctx, url: str):
+    async def set_guild_url(self, ctx,*, url: str):
         guild = ctx.guild
         if url == "None" or url == "" or url == "none":
             f = open(f"guilds/{guild.id}.json", "r+") 
@@ -128,7 +128,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_botlog(self, ctx, channel: str):
+    async def set_botlog(self, ctx,*,channel: str):
         guild = ctx.guild
         if channel == "None" or channel == "":
             f = open(f"guilds/{guild.id}.json", "r+") 
@@ -212,7 +212,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_msg_welcome(self, ctx, message: str):
+    async def set_msg_welcome(self, ctx,*, message: str):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
@@ -330,7 +330,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_msg_private(self, ctx, message: str):
+    async def set_msg_private(self, ctx,*, message: str):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
@@ -463,7 +463,7 @@ class Server(commands.Cog):
                                 """
                     )
     @commands.has_permissions(administrator = True)
-    async def set_msg_bye(self, ctx, message: str):
+    async def set_msg_bye(self, ctx,*, message: str):
         guild = ctx.guild
         author = ctx.author
         owner = guild.owner.mention
