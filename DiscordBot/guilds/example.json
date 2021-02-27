@@ -1,9 +1,0 @@
-{
-    "GuildID": "ID int ", 
-    "URL": "https://www.google.com/", 
-    "Autorole": "ID int ", 
-    "BotLog": "ID int ",
-    "WelcomeMSG": "",
-    "PrivateMSG": "",
-    "ByeMSG": ""
-}
