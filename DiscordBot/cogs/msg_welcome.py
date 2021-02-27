@@ -96,6 +96,6 @@ class Welcome(commands.Cog):
             await channel.send(embed=embedMSG)
         except:
             pass
-        
+#------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Welcome(bot))
