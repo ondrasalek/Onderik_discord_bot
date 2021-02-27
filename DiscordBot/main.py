@@ -73,6 +73,7 @@ async def on_guild_join(ctx):
     for guild in guilds:
         guild_dict = {
 					"GuildID": guild.id,
+					"GuildName":guild.name,
 					"Autorole": "",
 					"URL": "", 
 					"BotLog": "",
