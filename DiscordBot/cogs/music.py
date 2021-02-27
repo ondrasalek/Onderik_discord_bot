@@ -10,6 +10,11 @@ youtube_dl.utils.bug_reports_message = lambda: ''
 
 ytdl_format_options = {
     'format': 'bestaudio/best',
+    'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
     'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
     'restrictfilenames': True,
     'noplaylist': True,
@@ -67,35 +72,35 @@ class Music(commands.Cog):
 					color = discord.Colour.dark_red()
 				)
                 await ctx.send(embed=embed)
-        else:
-            if ctx.voice_client.is_playing(): # is connected to channel & stop
+
+        elif ctx.voice_client.is_playing(): # is connected to channel & stop
                 ctx.voice_client.stop()
                 
-            async with ctx.typing():
-                player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
-                ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-                
-            this = str(f"""```fix\n{player.title}```""")
+        async with ctx.typing():
+            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
             
-            embed = discord.Embed(
-                        title = "Právě hraje:",
-                        description = this,
-                        color = 0xFF1493
-                    )
-            message = await ctx.send(embed=embed)
-            await message.add_reaction("🟢")
+        this = str(f"""**```fix\n{player.title}```**""")
         
+        embed = discord.Embed(
+                    color = 0xFF1493
+                )
+        embed.add_field(name=f"Právě hraje",value=this,inline=False)
+        embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
+        await ctx.send(embed=embed)
+
+                
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE music.")   
     async def pause(self, ctx):
         if ctx.voice_client.is_playing():
             embed = discord.Embed(
-                        title = f"Pause",
+                        title = "Pause",
                         description = this,
                         color = 0xFF1493
                     )
-            message = await ctx.send(embed=embed)
-            await message.add_reaction("⏸")
+            embed.add_field(name="\u200b",value=f"⏸`{ctx.author.voice.channel}`",inline=False)
+            await ctx.send(embed=embed)
             await ctx.voice_client.pause()
         else:
             embed= discord.Embed(
@@ -109,12 +114,12 @@ class Music(commands.Cog):
     async def resume(self, ctx):
         if ctx.voice_client.is_paused():
             embed = discord.Embed(
-                        title = f"Resume",
+                        title = "Resume",
                         description = this,
                         color = 0xFF1493
                     )
-            message = await ctx.send(embed=embed)
-            await message.add_reaction("▶")
+            embed.add_field(name="\u200b",value=f"⏯`{ctx.author.voice.channel}`",inline=False)
+            await ctx.send(embed=embed)
             await ctx.voice_client.resume()
         else:
             embed = discord.Embed(
@@ -126,11 +131,10 @@ class Music(commands.Cog):
     @commands.command(help="STOP music.")
     async def stop(self, ctx):
         embed = discord.Embed(
-                    title = f"Stop.",
+                    title = "🔇Stop & Disconnect",
                     color = 0xFF1493
                 )
-        message = await ctx.send(embed=embed)
-        await message.add_reaction("🔴")
+        await ctx.send(embed=embed)
         await ctx.voice_client.disconnect()
 
 this = ""
