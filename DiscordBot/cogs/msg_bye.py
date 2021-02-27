@@ -40,7 +40,6 @@ class Welcome(commands.Cog):
         except KeyError:
             bmsg = None
         f.close()
-        
-        
+#------------------------------------------------------------------    
 def setup(bot):
     bot.add_cog(Welcome(bot))
