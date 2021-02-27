@@ -1,6 +1,6 @@
 # DiscordBot
 1. [Commands](https://github.com/ondrasalek/DiscordBot#commands)
-    - [Examples](https://github.com/ondrasalek/DiscordBot#examples)
+    
     1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
     2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
 ## Commands `.help <command>`
@@ -29,10 +29,6 @@ COMMANDS | ABOUT command | Arguments
 `.info_user` | Info about You | .
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
 
-## Examples
-COMMAND | IMAGE
-------------- | -------------
-.help | ![help](https://cdn.discordapp.com/attachments/803664917030633522/811949364729348146/unknown.png)
-.clear | ![clear2](https://cdn.discordapp.com/attachments/803664917030633522/811950913618313246/Snimek_obrazovky_2021-02-18_141552.png)
+
 
 [TOP](https://github.com/ondrasalek/DiscordBot/blob/master/README.md#discordbot)
