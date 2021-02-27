@@ -559,5 +559,6 @@ class Server(commands.Cog):
                             color = discord.Colour.dark_red()
                             )
                     await ctx.send(embed=embed)
+#------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Server(bot))
