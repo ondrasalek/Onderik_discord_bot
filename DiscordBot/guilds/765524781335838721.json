@@ -1,0 +1,9 @@
+{
+    "GuildID": 765524781335838721,
+    "Autorole": 776892286902206475,
+    "URL": "https://www.pawnee.cz/",
+    "BotLog": 805167450277937155,
+    "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru **{server}**.\n\nAbys m\u011bl spr\u00e1vn\u00e9 role, napi\u0161 {owner}.",
+    "PrivateMSG": "Ahoj, v\u00edtej mezi n\u00e1mi na **{server}**.\n\nNastav si pros\u00edm p\u0159ezd\u00edvku jako sv\u00e9 jm\u00e9no, abychom t\u011b poznali. \ud83d\ude42\n",
+    "ByeMSG": "Opou\u0161t\u00ed n\u00e1s {user} \ud83d\ude22 \ud83d\ude2d "
+}
