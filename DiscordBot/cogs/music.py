@@ -2,7 +2,6 @@ import asyncio
 
 import discord
 import youtube_dl
-import math
 
 from discord.ext import commands
 #------------------------------------------------------------------
@@ -68,22 +67,23 @@ class Music(commands.Cog):
 					color = discord.Colour.dark_red()
 				)
                 await ctx.send(embed=embed)
-        elif ctx.voice_client.is_playing(): # is connected to channel & stop
-            ctx.voice_client.stop()
+        else:
+            if ctx.voice_client.is_playing(): # is connected to channel & stop
+                ctx.voice_client.stop()
+                
+            async with ctx.typing():
+                player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+                ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+                
+            this = str(f"""```fix\n{player.title}```""")
             
-        async with ctx.typing():
-            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
-            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-            
-        this = str(f"""```fix\n{player.title}```""")
-        
-        embed = discord.Embed(
-					title = "Právě hraje:",
-                    description = this,
-					color = 0xFF1493
-				)
-        message = await ctx.send(embed=embed)
-        await message.add_reaction("🟢")
+            embed = discord.Embed(
+                        title = "Právě hraje:",
+                        description = this,
+                        color = 0xFF1493
+                    )
+            message = await ctx.send(embed=embed)
+            await message.add_reaction("🟢")
         
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE music.")   
