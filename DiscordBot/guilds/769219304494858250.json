@@ -1,9 +1,10 @@
 {
-        "GuildID": 769219304494858250,
-        "Autorole": "",
-        "URL": "",
-        "BotLog": "",
-        "WelcomeMSG": "Ahoj {user}, vítej na serveru {server}!",
-        "PrivateMSG": "",
-        "ByeMSG": ""
-    }
+    "GuildID": 769219304494858250,
+    "Autorole": "",
+    "URL": "",
+    "BotLog": "",
+    "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru {server}!",
+    "PrivateMSG": "",
+    "ByeMSG": "",
+    "GuildName": "THE EMPIRE"
+}

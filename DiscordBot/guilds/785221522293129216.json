@@ -1,9 +1,10 @@
 {
-        "GuildID": 785221522293129216,
-        "Autorole": "",
-        "URL": "",
-        "BotLog": "",
-        "WelcomeMSG": "Ahoj {user}, vítej na serveru {server}!",
-        "PrivateMSG": "",
-        "ByeMSG": ""
-    }
+    "GuildID": 785221522293129216,
+    "Autorole": "",
+    "URL": "",
+    "BotLog": "",
+    "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru {server}!",
+    "PrivateMSG": "",
+    "ByeMSG": "",
+    "GuildName": "\u017delezn\u00ed prdel\u00e1\u010di"
+}

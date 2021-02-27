@@ -1,9 +1,10 @@
 {
-        "GuildID": 708755587034382406,
-        "Autorole": "",
-        "URL": "",
-        "BotLog": "",
-        "WelcomeMSG": "Ahoj {user}, vítej na serveru {server}!",
-        "PrivateMSG": "",
-        "ByeMSG": ""
-    }
+    "GuildID": 708755587034382406,
+    "Autorole": "",
+    "URL": "",
+    "BotLog": "",
+    "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru {server}!",
+    "PrivateMSG": "",
+    "ByeMSG": "",
+    "GuildName": "IV"
+}

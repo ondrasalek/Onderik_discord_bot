@@ -5,5 +5,6 @@
     "BotLog": 803664917030633522,
     "WelcomeMSG": "Ahoj {user}, v\u00edtej na serveru {server}.",
     "PrivateMSG": "Ahoj, jsem r\u00e1d, \u017ee ses p\u0159idal k na\u0161\u00ed testovac\u00ed part\u011b na **{server}**",
-    "ByeMSG": ""
+    "ByeMSG": "",
+    "GuildName": "TEST serv"
 }

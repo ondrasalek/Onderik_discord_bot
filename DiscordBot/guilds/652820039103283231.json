@@ -1,8 +1,10 @@
 {
-    "GuildID": 652820039103283231, 
-    "Autorole": 803715378281840651, 
-    "URL": "https://www.youtube.com/channel/UC46dFLGw8uarxpYvgAryVZg", 
-    "BotLog": "", "WelcomeMSG": "V\u00edtej {user} na {server}", 
-    "PrivateMSG": "", 
-    "ByeMSG": "{user} n\u00e1s opou\u0161t\u00ed a odch\u00e1z\u00ed do nezn\u00e1ma \ud83d\ude2d "
+    "GuildID": 652820039103283231,
+    "Autorole": 803715378281840651,
+    "URL": "https://www.youtube.com/channel/UC46dFLGw8uarxpYvgAryVZg",
+    "BotLog": "",
+    "WelcomeMSG": "V\u00edtej {user} na {server}",
+    "PrivateMSG": "",
+    "ByeMSG": "{user} n\u00e1s opou\u0161t\u00ed a odch\u00e1z\u00ed do nezn\u00e1ma \ud83d\ude2d ",
+    "GuildName": "Bo\u017e\u00ed Discord"
 }
