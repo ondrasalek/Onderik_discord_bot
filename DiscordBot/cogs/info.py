@@ -258,6 +258,6 @@ class Info(commands.Cog):
         embed.add_field(name=f"Počet uživatelů s přístupem ({members_count})", value=text, inline=False)
 
         await ctx.send(embed=embed)
-        
+#------------------------------------------------------------------      
 def setup(bot):
     bot.add_cog(Info(bot))
