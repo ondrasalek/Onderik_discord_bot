@@ -1,5 +1,4 @@
 import asyncio
-from asyncio.windows_events import NULL
 
 import discord
 import youtube_dl
@@ -66,7 +65,7 @@ class Music(commands.Cog):
         if url.find("open.spotify.com") != -1:
             embed= discord.Embed(
                     title = "Podporovaný formát URL je pouze pro YouTube",
-                    color = 0xFF1493
+                    color = discord.Colour.dark_red()
                 )
             await ctx.send(embed=embed)
         else:
