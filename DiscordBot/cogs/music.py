@@ -150,7 +150,7 @@ class Music(commands.Cog):
             await ctx.send(embed=embed)
             await ctx.voice_client.disconnect()
         
-    @commands.Cog.listener()
+"""    @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         global this
         global text_channel
@@ -169,7 +169,7 @@ class Music(commands.Cog):
                     await voice_channel.voice_client.disconnect()
                     this = None
                     text_channel = None
-                    voice_channel = None
+                    voice_channel = None"""
 
 this = None
 text_channel = None
