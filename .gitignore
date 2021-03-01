@@ -2,7 +2,7 @@
 test/
 .DS_Store
 DiscordBot/configuration.json
-*.json
+guilds/*.json
 *.pyc
 
 *.ini
