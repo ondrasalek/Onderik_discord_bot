@@ -61,40 +61,47 @@ class Music(commands.Cog):
         self.bot = bot
         
     @commands.command(aliases=["p"],
-                      help="PLAY")
+                      help="PLAY YouTube")
     async def play(self, ctx, *, url):
-        global this
-        global text_channel
-        global voice_channel
-        
-        if ctx.voice_client is None:
-            if ctx.author.voice:
-                await ctx.author.voice.channel.connect() #connect to channel
-            else:
-                embed= discord.Embed(
-					title = "Nejste připojeni v voice channelu.",
-					color = discord.Colour.dark_red()
-				)
-                await ctx.send(embed=embed)
-
-        elif ctx.voice_client.is_playing(): # is connected to channel & stop
-                ctx.voice_client.stop()
-                
-        async with ctx.typing():
-            player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
-            ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-        
-        this = str(f"""**```fix\n{player.title}```**""")
-        
-        embed = discord.Embed(
+        if url.find("open.spotify.com") != -1:
+            embed= discord.Embed(
+                    title = "Podporovaný formát URL je pouze pro YouTube",
                     color = 0xFF1493
                 )
-        embed.add_field(name=f"Právě hraje",value=this,inline=False)
-        embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
-        await ctx.send(embed=embed)
+            await ctx.send(embed=embed)
+        else:
+            global this
+            global text_channel
+            global voice_channel
+            
+            if ctx.voice_client is None:
+                if ctx.author.voice:
+                    await ctx.author.voice.channel.connect() #connect to channel
+                else:
+                    embed= discord.Embed(
+                        title = "Nejste připojeni v voice channelu.",
+                        color = discord.Colour.dark_red()
+                    )
+                    await ctx.send(embed=embed)
+
+            elif ctx.voice_client.is_playing(): # is connected to channel & stop
+                    ctx.voice_client.stop()
+                    
+            async with ctx.typing():
+                player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+                ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
         
-        text_channel = ctx.channel
-        voice_channel = ctx
+            this = str(f"""**```fix\n{player.title}```**""")
+            
+            embed = discord.Embed(
+                        color = 0xFF1493
+                    )
+            embed.add_field(name=f"Právě hraje",value=this,inline=False)
+            embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
+            await ctx.send(embed=embed)
+            
+            text_channel = ctx.channel
+            voice_channel = ctx
         
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE")   
