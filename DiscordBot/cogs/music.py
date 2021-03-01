@@ -62,7 +62,7 @@ class Music(commands.Cog):
     @commands.command(aliases=["p"],
                       help="PLAY YouTube")
     async def play(self, ctx, *, url):
-        if url.find("open.spotify.com") != -1:
+        if url.find("https://") != -1 and url.find("https://www.youtube.com/") == -1:
             embed= discord.Embed(
                     title = "Podporovaný formát URL je pouze pro YouTube",
                     color = discord.Colour.dark_red()
