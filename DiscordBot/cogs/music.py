@@ -60,7 +60,7 @@ class Music(commands.Cog):
         self.bot = bot
         
     @commands.command(aliases=["p"],
-                      help="PLAY music.")
+                      help="PLAY")
     async def play(self, ctx, *, url):
         global this
         if ctx.voice_client is None:
@@ -91,7 +91,7 @@ class Music(commands.Cog):
 
                 
     @commands.command(aliases = ["pozastavit"],
-                      help = "PAUSE music.")   
+                      help = "PAUSE")   
     async def pause(self, ctx):
         if ctx.voice_client.is_playing():
             embed = discord.Embed(
@@ -110,7 +110,7 @@ class Music(commands.Cog):
             await ctx.send(embed=embed)
         
     @commands.command(aliases=["continue","pokracuj"],
-                      help="RESUME music.")   
+                      help="RESUME")   
     async def resume(self, ctx):
         if ctx.voice_client.is_paused():
             embed = discord.Embed(
@@ -128,7 +128,7 @@ class Music(commands.Cog):
 				)
             await ctx.send(embed=embed)
         
-    @commands.command(help="STOP music.")
+    @commands.command(help="STOP")
     async def stop(self, ctx):
         embed = discord.Embed(
                     title = "🔇Stop & Disconnect",
