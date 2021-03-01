@@ -1,4 +1,5 @@
 import asyncio
+from asyncio.windows_events import NULL
 
 import discord
 import youtube_dl
@@ -63,6 +64,9 @@ class Music(commands.Cog):
                       help="PLAY")
     async def play(self, ctx, *, url):
         global this
+        global text_channel
+        global voice_channel
+        
         if ctx.voice_client is None:
             if ctx.author.voice:
                 await ctx.author.voice.channel.connect() #connect to channel
@@ -79,7 +83,7 @@ class Music(commands.Cog):
         async with ctx.typing():
             player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
             ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-            
+        
         this = str(f"""**```fix\n{player.title}```**""")
         
         embed = discord.Embed(
@@ -88,8 +92,10 @@ class Music(commands.Cog):
         embed.add_field(name=f"Právě hraje",value=this,inline=False)
         embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
         await ctx.send(embed=embed)
-
-                
+        
+        text_channel = ctx.channel
+        voice_channel = ctx
+        
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE")   
     async def pause(self, ctx):
@@ -104,11 +110,11 @@ class Music(commands.Cog):
             await ctx.voice_client.pause()
         else:
             embed= discord.Embed(
-					title = "BOT nehraje.",
-					color = 0xFF1493
-				)
+                    title = "BOT nehraje.",
+                    color = 0xFF1493
+                )
             await ctx.send(embed=embed)
-        
+
     @commands.command(aliases=["continue","pokracuj"],
                       help="RESUME")   
     async def resume(self, ctx):
@@ -123,21 +129,45 @@ class Music(commands.Cog):
             await ctx.voice_client.resume()
         else:
             embed = discord.Embed(
-					title = "BOT není pozastaven.",
-					color = 0xFF1493
-				)
-            await ctx.send(embed=embed)
-        
-    @commands.command(help="STOP")
-    async def stop(self, ctx):
-        embed = discord.Embed(
-                    title = "🔇Stop & Disconnect",
+                    title = "BOT není pozastaven.",
                     color = 0xFF1493
                 )
-        await ctx.send(embed=embed)
-        await ctx.voice_client.disconnect()
+            await ctx.send(embed=embed)
+            
+    @commands.command(help="STOP")
+    async def stop(self, ctx):
+        if ctx.voice_client.is_playing():
+            embed = discord.Embed(
+                        title = "🔇Stop & Disconnect",
+                        color = 0xFF1493
+                    )
+            await ctx.send(embed=embed)
+            await ctx.voice_client.disconnect()
+        
+    @commands.Cog.listener()
+    async def on_voice_state_update(self, member, before, after):
+        global this
+        global text_channel
+        global voice_channel
+        if this != None and text_channel != None and voice_channel != None:
+            if after.channel is not None:
+                channel = self.bot.get_channel(after.channel.id)
+                count = len(channel.members) - 1
+                if count == 0:
+                    
+                    embed = discord.Embed(
+                            title = "🔇Stop & Disconnect",
+                            color = 0xFF1493
+                        )
+                    await text_channel.send(embed=embed)
+                    await voice_channel.voice_client.disconnect()
+                    this = None
+                    text_channel = None
+                    voice_channel = None
 
-this = ""
+this = None
+text_channel = None
+voice_channel = None
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Music(bot))
