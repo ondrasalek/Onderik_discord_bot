@@ -33,7 +33,7 @@ COMMANDS | ABOUT command | Arguments
 #### Music
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
-`.play` | Play song | `<URL / name / author...>`
+`.play` | Play song (YouTube) | `<URL / name / author...>`
 `.pause` | Pause | .
 `.resume` | Resume | .
 `.stop` | Stop | .
