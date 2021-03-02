@@ -16,14 +16,16 @@ class Clear(commands.Cog):
     async def clear(self, ctx, amount: int):
         if amount > 333:
             amount = 333
-            await ctx.send("```Maximálně lze smazat 333 zpráv\nBudou smazány za 5 sekund!```")
-            time.sleep(5)
+            await ctx.send("```Maximálně lze smazat 333 zpráv\nBudou smazány za 3s!```")
+            time.sleep(2)
 
         guild = ctx.guild
 
         author = ctx.author
         TChannel = ctx.channel
-        await ctx.channel.purge(limit=amount)
+        
+        async with ctx.typing():
+            await ctx.channel.purge(limit=amount)
         
 
         embed1 = discord.Embed(
