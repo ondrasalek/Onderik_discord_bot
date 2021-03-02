@@ -90,9 +90,9 @@ class Server(commands.Cog):
                     color = discord.Colour.gold()
                     )
             else:
-                if len(url)<2048:
-                    valid=validators.url(url)
-                    if valid == True:
+                if len(url) < 2048:
+                    valid = validators.url(url)
+                    if valid is True:
                         f = open(f"guilds/{guild.id}.json", "r+") 
                         data = json.load(f)
                         data["URL"] = url
