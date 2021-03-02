@@ -39,4 +39,4 @@ COMMANDS | ABOUT command | Arguments
 `.stop` | Stop | .
 
 
-[TOP](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#discordbot)
+[TOP](https://github.com/ondrasalek/Onderik_discord_bot#discordbot)
