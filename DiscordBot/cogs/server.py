@@ -502,7 +502,7 @@ class Server(commands.Cog):
                             )
                         await ctx.send(embed=embed)
                     else:
-                        message = message.replace("{user}",f"{author.mention}")
+                        message = message.replace("{user}",f"`{author.display_name}`")
                         message = message.replace("{server}",f"{guild.name}")
                         
                         icon_url = guild.icon_url
@@ -540,7 +540,7 @@ class Server(commands.Cog):
                     embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
                     await ctx.send(embed=embed)
                     
-                    message = message.replace("{user}",f"{author.mention}")
+                    message = message.replace("{user}",f"`{author.display_name}`")
                     message = message.replace("{server}",f"{guild.name}")
                     
                     icon_url = guild.icon_url
