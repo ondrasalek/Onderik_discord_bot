@@ -71,8 +71,7 @@ class Music(commands.Cog):
         else:
             global this
             global text_channel
-            global voice_channel
-            
+                        
             if ctx.voice_client is None:
                 if ctx.author.voice:
                     await ctx.author.voice.channel.connect() #connect to channel
@@ -100,7 +99,6 @@ class Music(commands.Cog):
             await ctx.send(embed=embed)
             
             text_channel = ctx.channel
-            voice_channel = ctx
         
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE")   
@@ -149,31 +147,20 @@ class Music(commands.Cog):
                     )
             await ctx.send(embed=embed)
             await ctx.voice_client.disconnect()
-        
-"""    @commands.Cog.listener()
-    async def on_voice_state_update(self, member, before, after):
-        global this
-        global text_channel
-        global voice_channel
-        if this != None and text_channel != None and voice_channel != None:
-            if after.channel is not None:
-                channel = self.bot.get_channel(after.channel.id)
-                count = len(channel.members) - 1
-                if count == 0:
                     
-                    embed = discord.Embed(
+    @commands.Cog.listener()
+    async def on_voice_state_update(self, member, before, after):
+        voice_state = member.guild.voice_client
+        if voice_state is not None and len(voice_state.channel.members) == 1:
+            embed = discord.Embed(
                             title = "🔇Stop & Disconnect",
                             color = 0xFF1493
                         )
-                    await text_channel.send(embed=embed)
-                    await voice_channel.voice_client.disconnect()
-                    this = None
-                    text_channel = None
-                    voice_channel = None"""
-
+            await text_channel.send(embed=embed)
+            await voice_state.disconnect()
+            
 this = None
 text_channel = None
-voice_channel = None
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Music(bot))
