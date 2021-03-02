@@ -1,10 +1,9 @@
 # DiscordBot
 1. [Commands](https://github.com/ondrasalek/DiscordBot#commands)
-    
-    1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
-    2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
-            1. [Info]()
-            2. [Music]()
+   1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
+   2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
+      - [Info]()
+      - [Music]()
 ## Commands `.help <command>`
 ### Admin
 #### Server
