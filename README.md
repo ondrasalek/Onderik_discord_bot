@@ -1,9 +1,9 @@
 # DiscordBot
-1. [Commands](https://github.com/ondrasalek/DiscordBot#commands)
-   1. [Admin](https://github.com/ondrasalek/DiscordBot#for-admin)
-   2. [Everyone](https://github.com/ondrasalek/DiscordBot#for-everyone)
+1. [Commands](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#commands-help-command)
+   1. [Admin](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#admin)
+   2. [Everyone](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#everyone)
       - [Info](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#info)
-      - [Music](https://github.com/ondrasalek/Onderik_discord_bot#music)
+      - [Music](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#music)
 ## Commands `.help <command>`
 ### Admin
 #### Server
@@ -39,4 +39,4 @@ COMMANDS | ABOUT command | Arguments
 `.stop` | Stop | .
 
 
-[TOP](https://github.com/ondrasalek/DiscordBot/blob/master/README.md#discordbot)
+[TOP](https://github.com/ondrasalek/Onderik_discord_bot/blob/master/README.md#discordbot)
