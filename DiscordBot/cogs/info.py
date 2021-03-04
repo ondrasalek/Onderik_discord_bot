@@ -4,6 +4,7 @@ import datetime
 from random import randint
 import json
 
+url_bot="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot"
 
 class Info(commands.Cog):
     def __init__(self, bot):
@@ -21,15 +22,18 @@ class Info(commands.Cog):
         f.close()
         prikaz = f"{prefix}help"
 
-        b_bot = ctx.bot.user
-        name = b_bot.display_name
+        bot = self.bot
+        b_bot = bot.user
+        
+        name = b_bot.name
+        nick = b_bot.display_name
         avatar_url = b_bot.avatar_url
         created = b_bot.created_at.__format__('%d.%m. %Y')
         author = ctx.author.display_name
 
         embed = discord.Embed(
-            title=name,
-            url="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot",
+            title=nick,
+            url=url_bot,
             timestamp=datetime.datetime.utcnow(),
             color = discord.Colour.dark_blue()
         )
@@ -61,15 +65,28 @@ class Info(commands.Cog):
             botlog = None
         f.close()
 
-        embed.add_field(name = "Chceš mě na svůj server?", value="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot", inline=True)
-        
         guilds = len(self.bot.guilds)
         text = str(f"""```json\nJsem na {guilds} serverech.```""")
-        embed.add_field(name = "Na kolika serverech jsem?", value=text, inline=True)
+        embed.add_field(name = "Na kolika serverech jsem?", value=text, inline=False)
+        
+        embed.add_field(name = "\u200b", value=f"__Chceš mě na svůj server?\nNapiš:__ *`ADD {name}`*", inline=True)
         
         embed.set_footer(text = f"Zavolal: {author}")
         
         await ctx.send(embed=embed)
+        
+    # ON MESSAGE "ADD BOT NAME" SHOW URL TO ADD BOT 
+    @commands.Cog.listener()
+    async def on_message(self, message):
+        bot = self.bot
+        if message.author.bot is False:
+            content = message.content
+            channel = message.channel
+            name = bot.user.name
+            content = content.upper()
+            if content == f"ADD {str(name)}":
+                await channel.send(url_bot)
+                await bot.process_commands(message)
 #---------------------------_ROLE_INFO_----------------------------
     @commands.command(aliases=["r", 'role'], 
                     help='Seznam rolí.')
@@ -77,7 +94,6 @@ class Info(commands.Cog):
         if role is None:
             guild = ctx.guild
             roles = guild.roles
-            role_count = len(roles)
 
             embed = discord.Embed(
                     title='Seznam Rolí',

@@ -23,7 +23,7 @@ class Welcome(commands.Cog):
             if bmsg == "":
                 bmsg = None
             else:
-                bmsg = bmsg.replace("{user}",f"`{member.display_name}`")
+                bmsg = bmsg.replace("{user}",f"{member.display_name}")
                 bmsg = bmsg.replace("{server}",f"{guild.name}")
                 
                 #Bye zpráva

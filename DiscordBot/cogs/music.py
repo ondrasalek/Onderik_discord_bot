@@ -1,5 +1,5 @@
 import asyncio
-
+import validators
 import discord
 import youtube_dl
 
@@ -15,7 +15,7 @@ ytdl_format_options = {
             'preferredcodec': 'mp3',
             'preferredquality': '192',
         }],
-    'outtmpl': '%(extractor)s-%(id)s-%(title)s.%(ext)s',
+    'outtmpl': '%(title)s.%(ext)s',
     'restrictfilenames': True,
     'noplaylist': True,
     'nocheckcertificate': True,
@@ -62,11 +62,11 @@ class Music(commands.Cog):
     @commands.command(aliases=["p"],
                       help="PLAY YouTube")
     async def play(self, ctx, *, url):
-        if url.find("https://") != -1 and url.find("https://www.youtube.com/") == -1:
+        if validators.url(url) and (url.find("https://www.youtube.com/") + url.find("https://youtu.be/")) < -1:
             embed= discord.Embed(
-                    title = "Podporovaný formát URL je pouze pro YouTube",
-                    color = discord.Colour.dark_red()
-                )
+                        title = "Podporovaný formát URL je pouze pro YouTube",
+                        color = discord.Colour.dark_red()
+                    )
             await ctx.send(embed=embed)
         else:
             global this
@@ -84,7 +84,7 @@ class Music(commands.Cog):
 
             elif ctx.voice_client.is_playing(): # is connected to channel & stop
                     ctx.voice_client.stop()
-                    
+   
             async with ctx.typing():
                 player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
                 ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
