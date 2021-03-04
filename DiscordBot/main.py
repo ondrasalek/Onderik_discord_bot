@@ -17,13 +17,13 @@ with open("configuration.json", "r") as config:
 	token = data["token"]
 	prefix = data["prefix"]
 	
-prikaz = f"{prefix}help"
+prefix_help = f"{prefix}help"
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=[prefix], intents = intents)
+bot = commands.Bot(command_prefix=[prefix_help], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 		except Exception:
 			print(f"Failed to load extension {extension}")
 #-----------------------_ON_READY_---------------------------------
-game = discord.Game(name=f"🤖{prikaz}🤖")
+game = discord.Game(name=f"🤖{prefix_help}🤖")
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} online 🟢')
