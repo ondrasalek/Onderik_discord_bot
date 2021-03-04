@@ -46,7 +46,7 @@ game = discord.Game(name=f"🤖{prefix_help}🤖")
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} online 🟢')
-    print(f"Discord verze: {discord.__version__}")
+    print(f"Discord version: {discord.__version__}")
     await bot.change_presence(activity=game)
 	#------------------------------------------------------------------
     guilds = bot.guilds
