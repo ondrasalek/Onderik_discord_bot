@@ -98,7 +98,8 @@ class Music(commands.Cog):
                         color = discord.Colour.dark_red()
                     )
                     await ctx.send(embed=embed)
-
+        # TODO: add to queue
+        
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE")   
     async def pause(self, ctx):
@@ -157,6 +158,8 @@ class Music(commands.Cog):
                         )
             await text_channel.send(embed=embed)
             await voice_state.disconnect()
+            
+    # TODO: add fce "skip" & "queue"
 
 this = None
 text_channel = None

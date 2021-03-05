@@ -18,7 +18,7 @@ with open("configuration.json", "r") as config:
 	prefix = data["prefix"]
 	
 prefix_help = f"{prefix}help"
-custom_prefix = {}
+#custom_prefix = {}
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
