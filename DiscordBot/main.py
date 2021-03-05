@@ -18,12 +18,13 @@ with open("configuration.json", "r") as config:
 	prefix = data["prefix"]
 	
 prefix_help = f"{prefix}help"
+custom_prefix = {}
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=[prefix], intents = intents)
+bot = commands.Bot(command_prefix=[prefix, custom_prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
@@ -32,6 +33,7 @@ initial_extensions = [
 	"cogs.info",
 	"cogs.onCommandError",
 	"cogs.msg_welcome",
+ 	"cogs.msg_private",
     "cogs.msg_bye",
     "cogs.music"
 ]

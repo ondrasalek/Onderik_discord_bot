@@ -2,6 +2,7 @@ import discord
 from discord.ext import commands
 import json
 from random import randint
+from discord.ext.commands.errors import NoEntryPointError
 import validators
 #------------------------------------------------------------------
 #------------------------------------------------------------------
@@ -214,124 +215,130 @@ class Server(commands.Cog):
     @commands.has_permissions(administrator = True)
     async def set_msg_welcome(self, ctx, message: str):
         guild = ctx.guild
-        author = ctx.author
-        owner = guild.owner.mention
-        wcolor = 0xfafafa
-
-        if message == "None" or message == "" or message == "default":
-            wm = None
-            
-            f = open(f"guilds/{guild.id}.json", "r+") 
-            data = json.load(f)
-            data["WelcomeMSG"] = ""
-            f.seek(0)
-            json.dump(data, f, indent=4)
-            f.truncate()
-            f.close()
-            
-            embed = discord.Embed(
-                        color = wcolor
-                    )
-            embed.add_field(name="Welcome zpráva je __zrušena__:", value=wm, inline=False)
-            await ctx.send(embed=embed)
-
-        else:
-            if message == "message" or message == "now":
-                f = open(f"guilds/{guild.id}.json", "r")
+        
+        channel = guild.system_channel # looking for system channel
+        if str(channel) != "None": 
+            author = ctx.author
+            owner = guild.owner.mention
+            wcolor = 0xfafafa
+            if message == "None" or message == "":
+                wm = None
+                
+                f = open(f"guilds/{guild.id}.json", "r+") 
                 data = json.load(f)
-                try:
-                    url = data["URL"]
-                    if url == "":
-                        url = None
-                except KeyError:
-                    url = None
-                try:
-                    message = data["WelcomeMSG"]
-                    if message == "":
+                data["WelcomeMSG"] = ""
+                f.seek(0)
+                json.dump(data, f, indent=4)
+                f.truncate()
+                f.close()
+                
+                embed = discord.Embed(
+                            color = wcolor
+                        )
+                embed.add_field(name="Welcome zpráva je __zrušena__:", value=wm, inline=False)
+                await ctx.send(embed=embed)
+            else:
+                if message == "message" or message == "now":
+                    f = open(f"guilds/{guild.id}.json", "r")
+                    data = json.load(f)
+                    try:
+                        message = data["WelcomeMSG"]
+                        if message == "":
+                            message = "Nothing"
+                            embed = discord.Embed(
+                                title = "AKTUÁLNĚ",
+                                description = message,
+                                color = discord.Colour.gold()
+                                )
+                            await ctx.send(embed=embed)
+                        else:
+                            try:
+                                url = data["URL"]
+                                if url == "":
+                                    url = None
+                            except KeyError:
+                                url = None
+                                
+                            message = message.replace("{user}",f"{author.mention}")
+                            message = message.replace("{server}",f"{guild.name}")
+                            message = message.replace("{owner}",f"{owner}")
+                            message = message.replace("{url}",f"{url}")
+                            
+                            icon_url = guild.icon_url
+                            embed = discord.Embed(
+                                title = "AKTUÁLNĚ",
+                                color = discord.Colour.gold()
+                                )
+                            await ctx.send(embed=embed)
+                            
+                            embedW = discord.Embed(
+                                description = message,
+                                color = wcolor
+                                )
+                            embedW.set_author(name=guild.name, icon_url=icon_url)
+                            embedW.set_thumbnail(url=icon_url)
+                            await ctx.send(embed=embedW)
+                    except KeyError:
                         message = "Nothing"
                         embed = discord.Embed(
-                            title = "AKTUÁLNĚ",
-                            description = message,
-                            color = discord.Colour.gold()
-                            )
+                                title = "AKTUÁLNĚ",
+                                description = message,
+                                color = discord.Colour.gold()
+                                )
                         await ctx.send(embed=embed)
-                    else:
+                    f.close() 
+                else:
+                    if len(message) < 333:
+                        f = open(f"guilds/{guild.id}.json", "r+") 
+                        data = json.load(f)
+                        data["WelcomeMSG"] = message
+                        f.seek(0)
+                        json.dump(data, f, indent=4)
+                        f.truncate()
+                        
+                        try:
+                            url = data["URL"]
+                            if url == "":
+                                url = None
+                        except KeyError:
+                            url = None
+                        f.close()
+                        
+                        embed = discord.Embed(
+                                    color = randint(0, 0xffffff)
+                                )
+                        embed.add_field(name="Welcome zpráva je nastavena na:", value=message, inline=False)
+                        embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
+                        await ctx.send(embed=embed)
+                        
                         message = message.replace("{user}",f"{author.mention}")
                         message = message.replace("{server}",f"{guild.name}")
                         message = message.replace("{owner}",f"{owner}")
                         message = message.replace("{url}",f"{url}")
                         
                         icon_url = guild.icon_url
-
-                        embed = discord.Embed(
-                            title = "AKTUÁLNĚ",
-                            color = discord.Colour.gold()
-                            )
-                        await ctx.send(embed=embed)
-                        
                         embedW = discord.Embed(
                             description = message,
                             color = wcolor
                             )
                         embedW.set_author(name=guild.name, icon_url=icon_url)
                         embedW.set_thumbnail(url=icon_url)
-
                         await ctx.send(embed=embedW)
-                except KeyError:
-                    message = "Nothing"
-                    embed = discord.Embed(
-                            title = "AKTUÁLNĚ",
-                            description = message,
-                            color = discord.Colour.gold()
-                            )
-                    await ctx.send(embed=embed)
-                f.close() 
-            else:
-                if len(message) < 333:
-                    f = open(f"guilds/{guild.id}.json", "r+") 
-                    data = json.load(f)
-                    data["WelcomeMSG"] = message
-                    f.seek(0)
-                    json.dump(data, f, indent=4)
-                    f.truncate()
-                    
-                    try:
-                        url = data["URL"]
-                        if url == "":
-                            url = None
-                    except KeyError:
-                        url = None
-                    f.close()
-                    
-                    embed = discord.Embed(
-                                color = randint(0, 0xffffff)
-                            )
-                    embed.add_field(name="Welcome zpráva je nastavena na:", value=message, inline=False)
-                    embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
-                    await ctx.send(embed=embed)
-                    
-                    message = message.replace("{user}",f"{author.mention}")
-                    message = message.replace("{server}",f"{guild.name}")
-                    message = message.replace("{owner}",f"{owner}")
-                    message = message.replace("{url}",f"{url}")
-                    
-                    icon_url = guild.icon_url
-
-                    embedW = discord.Embed(
-                        description = message,
-                        color = wcolor
-                        )
-                    embedW.set_author(name=guild.name, icon_url=icon_url)
-                    embedW.set_thumbnail(url=icon_url)
-
-                    await ctx.send(embed=embedW)
-                else:
-                    embed= discord.Embed(
-                            title = "Zpráva je moc dlouhá.",
-                            description = f"{len(message)} znaků!",
-                            color = discord.Colour.dark_red()
-                            )
-                    await ctx.send(embed=embed)
+                    else:
+                        embed= discord.Embed(
+                                title = "Zpráva je moc dlouhá.",
+                                description = f"{len(message)} znaků!",
+                                color = discord.Colour.dark_red()
+                                )
+                        await ctx.send(embed=embed)
+        else: # if cant find system_channel
+            embed= discord.Embed(
+					title = "Server nemá nastavený channel pro systémové zprávy",
+                    description = "Co změnit?",
+					color = discord.Colour.dark_red()
+				)
+            embed.set_image(url="https://raw.githubusercontent.com/ondrasalek/Onderik_discord_bot/master/sources/kanal%20sys%20zprav.png")
+            await ctx.send(embed=embed)
 #----------------------------_PRIVATE_----------------------------
     @commands.command(aliases=["pmsg","private"],
 					help = "Nastavit Privátní welcome zprávu (max 255 znaků).",
@@ -481,100 +488,118 @@ class Server(commands.Cog):
     @commands.has_permissions(administrator = True)
     async def set_msg_bye(self, ctx, message: str):
         guild = ctx.guild
-        author = ctx.author
-        owner = guild.owner.mention
-
-        if message == "None" or message == "":  
-            bm = None
-            
-            f = open(f"guilds/{guild.id}.json", "r+") 
-            data = json.load(f)
-            data["ByeMSG"] = ""
-            f.seek(0)
-            json.dump(data, f, indent=4)
-            f.truncate()
-            f.close()
-            
-            embed = discord.Embed(
-                        color = randint(0, 0xffffff)
-                    )
-            embed.add_field(name="Bye zpráva je __zrušena__:", value=bm, inline=False)
-            await ctx.send(embed=embed)
-        else:
+        
+        channel = guild.system_channel # looking for system channel
+        if str(channel) != "None":
+            author = ctx.author
+            owner = guild.owner.mention
             bcolor = 0x000000
 
-            if message == "message" or message == "now":
-                f = open(f"guilds/{guild.id}.json", "r")
+            if message == "None" or message == "":  
+                bm = None
+                
+                f = open(f"guilds/{guild.id}.json", "r+") 
                 data = json.load(f)
-                    
-                try:
-                    message = data["ByeMSG"]
-                    if message == "":
-                        message = "Nothing"
+                data["ByeMSG"] = ""
+                f.seek(0)
+                json.dump(data, f, indent=4)
+                f.truncate()
+                f.close()
+                
+                embed = discord.Embed(
+                            color = randint(0, 0xffffff)
+                        )
+                embed.add_field(name="Bye zpráva je __zrušena__:", value=bm, inline=False)
+                await ctx.send(embed=embed)
+            else:
+                if message == "message" or message == "now":
+                    f = open(f"guilds/{guild.id}.json", "r")
+                    data = json.load(f)
+                    try:
+                        message = data["ByeMSG"]
+                        if message == "":
+                            message = "Nothing"
+                            embed = discord.Embed(
+                                title = "AKTUÁLNĚ",
+                                description = message,
+                                color = discord.Colour.gold()
+                                )
+                            await ctx.send(embed=embed)
+                        else:
+                            try:
+                                url = data["URL"]
+                                if url == "":
+                                    url = None
+                            except KeyError:
+                                url = None
+                                
+                            message = message.replace("{user}",f"{author.display_name}")
+                            message = message.replace("{server}",f"{guild.name}")
+                            message = message.replace("{owner}",f"{owner}")
+                            message = message.replace("{url}",f"{url}")
+                            
+                            icon_url = guild.icon_url
+
+                            embed = discord.Embed(
+                                title = "AKTUÁLNĚ",
+                                color = discord.Colour.gold()
+                                )
+                            await ctx.send(embed=embed)
+                            
+                            embedW = discord.Embed(
+                                description = message,
+                                color = bcolor
+                                )
+                            embedW.set_author(name=guild.name, icon_url=icon_url)
+
+                            await ctx.send(embed=embedW)
+                    except KeyError:
+                        pass
+                    f.close()
+                else:
+                    if len(message) < 333:
+                        f = open(f"guilds/{guild.id}.json", "r+") 
+                        data = json.load(f)
+                        data["ByeMSG"] = message
+                        f.seek(0)
+                        json.dump(data, f, indent=4)
+                        f.truncate()
+                        f.close()
+                        
                         embed = discord.Embed(
-                            title = "AKTUÁLNĚ",
-                            description = message,
-                            color = discord.Colour.gold()
-                            )
+                                    color = discord.Colour.gold()
+                                )
+                        embed.add_field(name="Bye zpráva je nastavena na:", value=message, inline=False)
+                        embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
                         await ctx.send(embed=embed)
-                    else:
+                        
                         message = message.replace("{user}",f"{author.display_name}")
                         message = message.replace("{server}",f"{guild.name}")
                         
                         icon_url = guild.icon_url
 
-                        embed = discord.Embed(
-                            title = "AKTUÁLNĚ",
-                            color = discord.Colour.gold()
-                            )
-                        await ctx.send(embed=embed)
-                        
-                        embedW = discord.Embed(
+                        embedB = discord.Embed(
                             description = message,
                             color = bcolor
                             )
-                        embedW.set_author(name=guild.name, icon_url=icon_url)
+                        embedB.set_author(name=guild.name, icon_url=icon_url)
 
-                        await ctx.send(embed=embedW)
-                except KeyError:
-                    pass
-                f.close()
-            else:
-                if len(message) < 333:
-                    f = open(f"guilds/{guild.id}.json", "r+") 
-                    data = json.load(f)
-                    data["ByeMSG"] = message
-                    f.seek(0)
-                    json.dump(data, f, indent=4)
-                    f.truncate()
-                    f.close()
-                    
-                    embed = discord.Embed(
-                                color = discord.Colour.gold()
-                            )
-                    embed.add_field(name="Bye zpráva je nastavena na:", value=message, inline=False)
-                    embed.add_field(name="--->>>", value="**Zpráva bude vypadat následovně.**", inline=False)
-                    await ctx.send(embed=embed)
-                    
-                    message = message.replace("{user}",f"{author.display_name}")
-                    message = message.replace("{server}",f"{guild.name}")
-                    
-                    icon_url = guild.icon_url
-
-                    embedB = discord.Embed(
-                        description = message,
-                        color = bcolor
-                        )
-                    embedB.set_author(name=guild.name, icon_url=icon_url)
-
-                    await ctx.send(embed=embedB)
-                else:
-                    embed= discord.Embed(
-                            title = "Zpráva je moc dlouhá.",
-                            description = f"{len(message)} znaků!",
-                            color = discord.Colour.dark_red()
-                            )
-                    await ctx.send(embed=embed)
+                        await ctx.send(embed=embedB)
+                    else:
+                        embed= discord.Embed(
+                                title = "Zpráva je moc dlouhá.",
+                                description = f"{len(message)} znaků!",
+                                color = discord.Colour.dark_red()
+                                )
+                        await ctx.send(embed=embed)
+        else: # if cant find system channel
+            embed= discord.Embed(
+					title = "Server nemá nastavený channel pro systémové zprávy",
+                    description = "Co změnit?",
+                    color = discord.Colour.dark_red()
+				)
+            embed.image(url="https://raw.githubusercontent.com/ondrasalek/Onderik_discord_bot/master/sources/kanal%20sys%20zprav.png")
+            await ctx.send(embed=embed)
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Server(bot))

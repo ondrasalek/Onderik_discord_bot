@@ -13,7 +13,9 @@ class Welcome(commands.Cog):
         
         owner = guild.owner.mention
         icon_url = guild.icon_url
-
+        
+        wcolor = 0xfafafa
+                
         # autorole
         f = open(f"guilds/{guild.id}.json", "r")
         data = json.load(f)
@@ -29,73 +31,38 @@ class Welcome(commands.Cog):
                     pass
         except KeyError:
             pass
-
-        try:
-            url = data["URL"]
-            if url == "":
-                url = None
-        except KeyError:
-            url = None
-            
         try:
             wmsg = data["WelcomeMSG"]
-        except KeyError:
-            wmsg = "Ahoj {user}, vítej na serveru **{server}**!"
-
-        try:
-            pmsg = data["PrivateMSG"]
-            if pmsg == "":
-                pmsg = None
+            if wmsg == "":
+                wmsg = None
             else:
-                pmsg = pmsg.replace("{user}",f"{member.mention}")
-                pmsg = pmsg.replace("{server}",f"{guild.name}")
-                pmsg = pmsg.replace("{owner}",f"{owner}")
-                pmsg = pmsg.replace("{url}",f"{url}")
-        except KeyError:
-            pmsg = None
-        f.close()
-        
-        wmsg = wmsg.replace("{user}",f"{member.mention}")
-        wmsg = wmsg.replace("{server}",f"{guild.name}")
-        wmsg = wmsg.replace("{owner}",f"{owner}")
-        wmsg = wmsg.replace("{url}",f"{url}")
-        
-        wcolor = 0xfafafa
-        pcolor = 0xa4edd1
-        try:
-            if pmsg is not None:
-                #Soukromá zpráva
-                embedPM = discord.Embed(
-                    title=url,
-                    description=pmsg,
-                    color = pcolor
-                )
-                embedPM.set_author(name=guild.name, icon_url=icon_url)
-                await member.send(embed=embedPM)
+                try:
+                    url = data["URL"]
+                    if url == "":
+                        url = None
+                except KeyError:
+                    url = None
+                    
+                wmsg = wmsg.replace("{user}",f"{member.mention}")
+                wmsg = wmsg.replace("{server}",f"{guild.name}")
+                wmsg = wmsg.replace("{owner}",f"{owner}")
+                wmsg = wmsg.replace("{url}",f"{url}")
                 
-            #Vítací zpráva
-            embedMSG = discord.Embed(
-                #title = f"{guild.name}",
-                description = wmsg,
-                color = wcolor
-            )
-            embedMSG.set_author(name=guild.name, icon_url=icon_url)
-            embedMSG.set_thumbnail(url=icon_url)
-
-        except: 
-            #Vítací zpráva
-            embedMSG = discord.Embed(
-                #title = f"{guild.name}",
-                description = wmsg,
-                color = wcolor
-            )
-            embedMSG.set_author(name=guild.name, icon_url=icon_url)
-            embedMSG.set_thumbnail(url=icon_url)
-        try:
-            channel = guild.system_channel
-            await channel.send(embed=embedMSG)
-        except:
+                embedMSG = discord.Embed(
+                    #title = f"{guild.name}",
+                    description = wmsg,
+                    color = wcolor
+                )
+                embedMSG.set_author(name=guild.name, icon_url=icon_url)
+                embedMSG.set_thumbnail(url=icon_url)
+                try:
+                    channel = guild.system_channel
+                    await channel.send(embed=embedMSG)
+                except AttributeError:
+                    pass
+        except KeyError:
             pass
+        f.close()
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Welcome(bot))
