@@ -1,12 +1,17 @@
 # DiscordBot
+
 1. [Commands](https://github.com/ondrasalek/Onderik_discord_bot#commands-help-command)
    1. [Admin](https://github.com/ondrasalek/Onderik_discord_botd#admin)
    2. [Everyone](https://github.com/ondrasalek/Onderik_discord_bot#everyone)
       - [Info](https://github.com/ondrasalek/Onderik_discord_bot#info)
       - [Music](https://github.com/ondrasalek/Onderik_discord_bot#music)
+
 ## Commands `.help <command>`
+
 ### Admin
+
 #### Server
+
 COMMAND | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
@@ -19,7 +24,9 @@ COMMAND | ABOUT command | Arguments
 `.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)
 
 ### Everyone
+
 #### Info
+
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.info_bot` | Info about BOT | .
@@ -31,12 +38,12 @@ COMMANDS | ABOUT command | Arguments
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
 
 #### Music
+
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
 `.play` | Play song (YouTube) | `<URL / name / author...>`
 `.pause` | Pause | .
 `.resume` | Resume | .
 `.stop` | Stop | .
-
 
 [TOP](https://github.com/ondrasalek/Onderik_discord_bot#discordbot)
