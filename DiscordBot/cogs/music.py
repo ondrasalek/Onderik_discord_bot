@@ -45,7 +45,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
     @classmethod
     async def from_url(cls, url, *, loop=None, stream=False):
         loop = loop or asyncio.get_event_loop()
-        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download=not stream))
+        data = await loop.run_in_executor(None, lambda: ytdl.extract_info(url, download = not stream))
 
         if 'entries' in data:
             # take first item from a playlist
@@ -69,12 +69,29 @@ class Music(commands.Cog):
                     )
             await ctx.send(embed=embed)
         else:
-            global this
-            global text_channel
-                        
             if ctx.voice_client is None:
                 if ctx.author.voice:
                     await ctx.author.voice.channel.connect() #connect to channel
+                    if ctx.voice_client.is_playing(): # is connected to channel & stop
+                        ctx.voice_client.stop()
+                        
+                    global this
+                    global text_channel
+                    
+                    async with ctx.typing():
+                        player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+                        ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
+                
+                        this = str(f"""**```fix\n{player.title}```**""")
+                        
+                        embed = discord.Embed(
+                                    color = 0xFF1493
+                                )
+                        embed.add_field(name=f"Právě hraje",value=this,inline=False)
+                        embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
+                        await ctx.send(embed=embed)
+                        
+                        text_channel = ctx.channel
                 else:
                     embed= discord.Embed(
                         title = "Nejste připojeni v voice channelu.",
@@ -82,24 +99,6 @@ class Music(commands.Cog):
                     )
                     await ctx.send(embed=embed)
 
-            elif ctx.voice_client.is_playing(): # is connected to channel & stop
-                    ctx.voice_client.stop()
-   
-            async with ctx.typing():
-                player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
-                ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
-        
-            this = str(f"""**```fix\n{player.title}```**""")
-            
-            embed = discord.Embed(
-                        color = 0xFF1493
-                    )
-            embed.add_field(name=f"Právě hraje",value=this,inline=False)
-            embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
-            await ctx.send(embed=embed)
-            
-            text_channel = ctx.channel
-        
     @commands.command(aliases = ["pozastavit"],
                       help = "PAUSE")   
     async def pause(self, ctx):
@@ -140,14 +139,14 @@ class Music(commands.Cog):
             
     @commands.command(help="STOP")
     async def stop(self, ctx):
-        if ctx.voice_client.is_playing():
+        if ctx.guild.voice_client.is_playing():
             embed = discord.Embed(
                         title = "🔇Stop & Disconnect",
                         color = 0xFF1493
                     )
             await ctx.send(embed=embed)
-            await ctx.voice_client.disconnect()
-                    
+            await ctx.guild.voice_client.disconnect()
+            
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         voice_state = member.guild.voice_client
@@ -158,9 +157,10 @@ class Music(commands.Cog):
                         )
             await text_channel.send(embed=embed)
             await voice_state.disconnect()
-            
+
 this = None
 text_channel = None
+queue = []
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Music(bot))

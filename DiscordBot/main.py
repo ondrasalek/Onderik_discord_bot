@@ -23,7 +23,7 @@ prefix_help = f"{prefix}help"
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=[prefix_help], intents = intents)
+bot = commands.Bot(command_prefix=[prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
@@ -61,7 +61,6 @@ async def on_ready():
 					"PrivateMSG": "",
 					"ByeMSG": ""
 					}
-
         try:
             f = open(f"guilds/{guild.id}.json", "r")
         except:
