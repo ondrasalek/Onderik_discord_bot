@@ -24,7 +24,7 @@ custom_prefix = {}
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=[prefix, custom_prefix], intents = intents)
+bot = commands.Bot(command_prefix=[prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
