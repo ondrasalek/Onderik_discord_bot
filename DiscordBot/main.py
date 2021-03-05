@@ -57,7 +57,7 @@ async def on_ready():
 					"Autorole": "",
 					"URL": "", 
 					"BotLog": "",
-					"WelcomeMSG": "Ahoj {user}, vítej na serveru **{server}**!",
+					"WelcomeMSG": "",
 					"PrivateMSG": "",
 					"ByeMSG": ""
 					}
@@ -78,7 +78,7 @@ async def on_guild_join(ctx):
 					"Autorole": "",
 					"URL": "", 
 					"BotLog": "",
-					"WelcomeMSG": "Ahoj {user}, vítej na serveru **{server}**!",
+					"WelcomeMSG": "",
 					"PrivateMSG": "",
                     "ByeMSG": ""
         			}

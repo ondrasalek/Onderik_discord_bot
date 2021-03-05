@@ -219,11 +219,11 @@ class Server(commands.Cog):
         wcolor = 0xfafafa
 
         if message == "None" or message == "" or message == "default":
-            wm = "Ahoj {user}, vítej na serveru **{server}**!"
+            wm = None
             
             f = open(f"guilds/{guild.id}.json", "r+") 
             data = json.load(f)
-            data["WelcomeMSG"] = wm
+            data["WelcomeMSG"] = ""
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
@@ -232,43 +232,60 @@ class Server(commands.Cog):
             embed = discord.Embed(
                         color = wcolor
                     )
-            embed.add_field(name="Welcome zpráva je nastavena na __základní__:", value=wm, inline=False)
+            embed.add_field(name="Welcome zpráva je __zrušena__:", value=wm, inline=False)
             await ctx.send(embed=embed)
 
         else:
             if message == "message" or message == "now":
                 f = open(f"guilds/{guild.id}.json", "r")
                 data = json.load(f)
-                message = data["WelcomeMSG"]
-                    
                 try:
                     url = data["URL"]
                     if url == "":
                         url = None
                 except KeyError:
                     url = None
+                try:
+                    message = data["WelcomeMSG"]
+                    if message == "":
+                        message = "Nothing"
+                        embed = discord.Embed(
+                            title = "AKTUÁLNĚ",
+                            description = message,
+                            color = discord.Colour.gold()
+                            )
+                        await ctx.send(embed=embed)
+                    else:
+                        message = message.replace("{user}",f"{author.mention}")
+                        message = message.replace("{server}",f"{guild.name}")
+                        message = message.replace("{owner}",f"{owner}")
+                        message = message.replace("{url}",f"{url}")
+                        
+                        icon_url = guild.icon_url
+
+                        embed = discord.Embed(
+                            title = "AKTUÁLNĚ",
+                            color = discord.Colour.gold()
+                            )
+                        await ctx.send(embed=embed)
+                        
+                        embedW = discord.Embed(
+                            description = message,
+                            color = wcolor
+                            )
+                        embedW.set_author(name=guild.name, icon_url=icon_url)
+                        embedW.set_thumbnail(url=icon_url)
+
+                        await ctx.send(embed=embedW)
+                except KeyError:
+                    message = "Nothing"
+                    embed = discord.Embed(
+                            title = "AKTUÁLNĚ",
+                            description = message,
+                            color = discord.Colour.gold()
+                            )
+                    await ctx.send(embed=embed)
                 f.close() 
-                message = message.replace("{user}",f"{author.mention}")
-                message = message.replace("{server}",f"{guild.name}")
-                message = message.replace("{owner}",f"{owner}")
-                message = message.replace("{url}",f"{url}")
-                
-                icon_url = guild.icon_url
-
-                embed = discord.Embed(
-                    title = "AKTUÁLNĚ",
-                    color = discord.Colour.gold()
-                    )
-                await ctx.send(embed=embed)
-                
-                embedW = discord.Embed(
-                    description = message,
-                    color = wcolor
-                    )
-                embedW.set_author(name=guild.name, icon_url=icon_url)
-                embedW.set_thumbnail(url=icon_url)
-
-                await ctx.send(embed=embedW)
             else:
                 if len(message) < 333:
                     f = open(f"guilds/{guild.id}.json", "r+") 
@@ -404,7 +421,6 @@ class Server(commands.Cog):
                             )
                     await ctx.send(embed=embed)
                 f.close() 
-                
             else:
                 if len(message) < 333:
                     f = open(f"guilds/{guild.id}.json", "r+") 
