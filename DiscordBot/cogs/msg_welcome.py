@@ -7,6 +7,7 @@ class Welcome(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+    # TODO: MAKE SANDING PHOTO
     @commands.Cog.listener()
     async def on_member_join(self, member):
         guild = member.guild

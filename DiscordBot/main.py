@@ -43,6 +43,7 @@ if __name__ == '__main__':
 			bot.load_extension(extension)
 		except Exception:
 			print(f"Failed to load extension {extension}")
+   #FIXME: MAKE EXTENSIONS TO CHOOSING
 #-----------------------_ON_READY_---------------------------------
 game = discord.Game(name=f"🤖{prefix_help}🤖")
 @bot.event
