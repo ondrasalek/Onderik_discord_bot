@@ -85,9 +85,7 @@ class Music(commands.Cog):
                 
                         this = str(f"""**```fix\n{player.title}```**""")
                         
-                        embed = discord.Embed(
-                                    color = 0xFF1493
-                                )
+                        embed = discord.Embed(color = 0xFF1493)
                         embed.add_field(name=f"Právě hraje",value=this,inline=False)
                         embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
                         await ctx.send(embed=embed)
@@ -143,11 +141,11 @@ class Music(commands.Cog):
     async def stop(self, ctx):
         if ctx.guild.voice_client.is_playing():
             embed = discord.Embed(
-                        title = "🔇Stop & Disconnect",
+                        title = "🔇Stop",
                         color = 0xFF1493
                     )
             await ctx.send(embed=embed)
-            await ctx.guild.voice_client.disconnect()
+            await ctx.guild.voice_client.stop()
             
     @commands.command(aliases=["hlasitost"])
     async def volume(self, ctx, volume: int):
@@ -183,7 +181,6 @@ class Music(commands.Cog):
             await text_channel.send(embed=embed)
             await voice_state.disconnect()
             
-    # TODO: add fce "skip" & "queue"
     @commands.command(help="DISCONNECT")
     async def leave(self, ctx):
         if ctx.guild.voice_client.is_connected():
@@ -193,10 +190,25 @@ class Music(commands.Cog):
                         )
             await text_channel.send(embed=embed)
             await ctx.guild.voice_client.disconnect()
-        
+            
+    @commands.command(aliases=["ted"],
+                      help="Teď hraje")
+    async def now(self, ctx):
+        if ctx.guild.voice_client.is_playing() or ctx.guild.voice_client.is_paused():
+            embed = discord.Embed(color = 0xFF1493)
+            embed.add_field(name=f"Právě hraje",value=this,inline=False)
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                    title = "BOT nehraje",
+                    color = 0xFF1493
+                )
+            await ctx.send(embed=embed)
+    # TODO: add fce "skip" & "queue"
+    
 this = None
 text_channel = None
-queue = []
+song_queue = []
 #------------------------------------------------------------------
 def setup(bot):
     bot.add_cog(Music(bot))
