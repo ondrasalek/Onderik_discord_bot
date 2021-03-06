@@ -58,7 +58,7 @@ class YTDLSource(discord.PCMVolumeTransformer):
 class Music(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        
+
     @commands.command(aliases=["p"],
                       help="PLAY YouTube")
     async def play(self, ctx, *, url):
@@ -79,7 +79,8 @@ class Music(commands.Cog):
                     global text_channel
                     
                     async with ctx.typing():
-                        player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True)
+                        player = await YTDLSource.from_url(url, loop=self.bot.loop, stream=True) #just stream
+                        #player = await YTDLSource.from_url(url, loop=self.bot.loop) #download
                         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
                 
                         this = str(f"""**```fix\n{player.title}```**""")
@@ -148,6 +149,29 @@ class Music(commands.Cog):
             await ctx.send(embed=embed)
             await ctx.guild.voice_client.disconnect()
             
+    @commands.command(aliases=["hlasitost"])
+    async def volume(self, ctx, volume: int):
+        if ctx.guild.voice_client.is_playing():
+            embed = discord.Embed(
+                title=f"Hlasitost {volume}%",
+                            color = 0xFF1493
+                        )
+            await ctx.send(embed=embed)
+            ctx.voice_client.source.volume = volume / 100
+        elif  ctx.guild.voice_client.is_paused():
+            embed = discord.Embed(
+                    title=f"Hlasitost {volume}%",
+                    description = "⏯ BOT je pozastaven",
+                    color = 0xFF1493
+                )
+            await ctx.send(embed=embed)
+        else:
+            embed = discord.Embed(
+                    title = "BOT nehraje",
+                    color = 0xFF1493
+                )
+            await ctx.send(embed=embed)
+            
     @commands.Cog.listener()
     async def on_voice_state_update(self, member, before, after):
         voice_state = member.guild.voice_client
@@ -160,7 +184,16 @@ class Music(commands.Cog):
             await voice_state.disconnect()
             
     # TODO: add fce "skip" & "queue"
-
+    @commands.command(help="DISCONNECT")
+    async def leave(self, ctx):
+        if ctx.guild.voice_client.is_connected():
+            embed = discord.Embed(
+                            title = "🔇Disconnect",
+                            color = 0xFF1493
+                        )
+            await text_channel.send(embed=embed)
+            await ctx.guild.voice_client.disconnect()
+        
 this = None
 text_channel = None
 queue = []
