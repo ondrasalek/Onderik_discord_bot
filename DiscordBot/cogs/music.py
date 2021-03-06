@@ -182,15 +182,17 @@ class Music(commands.Cog):
             await voice_state.disconnect()
         elif voice_state is not None:
             await asyncio.sleep(30) #wait 30 seconds
-            asyncio.run_coroutine_threadsafe(voice_state.disconnect(), self.bot.loop)
-            voice_state = None
-            embed = discord.Embed(
-                            title = "🔇Disconnect",
-                            description = "Není co hrát",
-                            color = 0xFF1493
-                    )
-            asyncio.run_coroutine_threadsafe(text_channel.send(embed=embed),self.bot.loop)
-            
+            try:
+                asyncio.run_coroutine_threadsafe(voice_state.disconnect(), self.bot.loop)
+                voice_state = None
+                embed = discord.Embed(
+                                title = "🔇Disconnect",
+                                description = "Není co hrát",
+                                color = 0xFF1493
+                        )
+                asyncio.run_coroutine_threadsafe(text_channel.send(embed=embed),self.bot.loop)
+            except AttributeError:
+                pass
     @commands.command(help="DISCONNECT")
     async def leave(self, ctx):
         if ctx.guild.voice_client.is_connected():
