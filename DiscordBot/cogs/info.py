@@ -6,7 +6,7 @@ import json
 
 url_bot="https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot"
 
-class Info(commands.Cog):
+class Info(commands.Cog, name="Info příkazy"):
     def __init__(self, bot):
         self.bot = bot
 

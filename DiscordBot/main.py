@@ -17,7 +17,7 @@ with open("configuration.json", "r") as config:
 	token = data["token"]
 	prefix = data["prefix"]
 	
-prefix_help = f"{prefix}help"
+prefix_help = f"{prefix}command"
 #custom_prefix = {}
 #------------------------------------------------------------------
 # Intents
@@ -30,14 +30,15 @@ bot = commands.Bot(command_prefix=[prefix], intents = intents)
 #------------------------------------------------------------------
 # Load cogs
 initial_extensions = [
+	"cogs.info",
 	"cogs.clear",
 	"cogs.server",
-	"cogs.info",
 	"cogs.onCommandError",
 	"cogs.msg_welcome",
  	"cogs.msg_private",
     "cogs.msg_bye",
-    "cogs.music"
+    "cogs.music",
+    "cogs.command"
 ]
 if __name__ == '__main__':
 	for extension in initial_extensions:

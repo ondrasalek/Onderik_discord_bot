@@ -5,7 +5,7 @@ import datetime
 import json
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-class Clear(commands.Cog):
+class Clear(commands.Cog, name="Clear"):
     def __init__(self, bot):
         self.bot = bot
 

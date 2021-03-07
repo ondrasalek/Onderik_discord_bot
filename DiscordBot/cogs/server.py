@@ -2,11 +2,10 @@ import discord
 from discord.ext import commands
 import json
 from random import randint
-from discord.ext.commands.errors import NoEntryPointError
 import validators
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-class Server(commands.Cog):
+class Server(commands.Cog, name="Server příkazy"):
     def __init__(self, bot):
         self.bot = bot
 #----------------------------_AUTOROLE_----------------------------
