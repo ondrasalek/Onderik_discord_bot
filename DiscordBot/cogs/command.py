@@ -38,13 +38,13 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
                                 color = 0x66ffcc
                             )
                         return await ctx.send(embed=embed)
-                    elif commandName != cmd.name:
-                        embed = discord.Embed(
+                if commandName != cmd.name:
+                    embed = discord.Embed(
                                 title = 'ERROR',
                                 description='Neznámý příkaz!',
                                 color = discord.Colour.dark_red()
                             )
-                        return await ctx.send(embed=embed)
+                    return await ctx.send(embed=embed)
                         
 def setup(bot):
 	bot.add_cog(HelpCog(bot))
