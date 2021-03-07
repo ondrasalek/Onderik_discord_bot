@@ -6,16 +6,15 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
 	def __init__(self, bot):
 		self.bot = bot
   
-	@commands.command(usage="(název commandu)",
-                    help="Seznam příkazů",
+	@commands.command(usage = "(název commandu)",
+                    help = "Seznam příkazů",
 					description = "Zobrazí nápovědu.",
                     hidden = True)
 	async def command (self, ctx, commandName=None):
+            with open("configuration.json", "r") as config: 
+                data = json.load(config)
+                prefix = data["prefix"]
             if commandName is None:
-                with open("configuration.json", "r") as config: 
-                    data = json.load(config)
-                    prefix = data["prefix"]
-                    
                 embed = discord.Embed(
                             #title = f"__{self.bot.user.name}__ HELP", 
                             title = "**List všech příkazů**",
@@ -32,11 +31,18 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
                 await ctx.send(embed=embed)
             else:
                 for cmd in self.bot.commands:
-                    if (commandName == cmd.name):
+                    if commandName == cmd.name:
                         embed = discord.Embed(
-                                title = f"`{cmd.name}`",
-                                description=f"*{cmd.help}*\n\n**Popis**\n{cmd.description}",
+                                title = f"`{prefix}{cmd.name}`",
+                                description=f"*{cmd.help}*\n\n{cmd.description}",
                                 color = 0x66ffcc
+                            )
+                        return await ctx.send(embed=embed)
+                    elif commandName != cmd.name:
+                        embed = discord.Embed(
+                                title = 'ERROR',
+                                description='Neznámý příkaz!',
+                                color = discord.Colour.dark_red()
                             )
                         return await ctx.send(embed=embed)
                         
