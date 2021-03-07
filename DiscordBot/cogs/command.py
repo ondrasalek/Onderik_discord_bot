@@ -8,7 +8,8 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
   
 	@commands.command(usage="(název commandu)",
                     help="Seznam příkazů",
-					description = "Zobrazí nápovědu.")
+					description = "Zobrazí nápovědu.",
+                    hidden = True)
 	async def command (self, ctx, commandName=None):
             if commandName is None:
                 with open("configuration.json", "r") as config: 
