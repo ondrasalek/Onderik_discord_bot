@@ -34,9 +34,10 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
                     if commandName == cmd.name:
                         embed = discord.Embed(
                                 title = f"`{prefix}{cmd.name}`",
-                                description=f"*{cmd.help}*\n\n{cmd.description}",
+                                description=f"{cmd.aliases}\n*{cmd.help}*\n\n{cmd.description}",
                                 color = 0x66ffcc
                             )
+                        #embed.add_field(name="asdasd",value=cmd.clean_params)
                         return await ctx.send(embed=embed)
                 if commandName != cmd.name:
                     embed = discord.Embed(
@@ -44,7 +45,7 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
                                 description='Neznámý příkaz!',
                                 color = discord.Colour.dark_red()
                             )
-                    return await ctx.send(embed=embed)
+                    await ctx.send(embed=embed)
                         
 def setup(bot):
 	bot.add_cog(HelpCog(bot))
