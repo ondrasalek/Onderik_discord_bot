@@ -49,3 +49,8 @@ COMMANDS | ABOUT command | Arguments
 `.pause` | Pause | .
 `.resume` | Resume | .
 `.stop` | Stop | .
+
+What to do | is here
+------------- | -------------
+If you want welcome and bye messages you should turn on this | ![system messages](sources/system_messages.png)
+--|--
