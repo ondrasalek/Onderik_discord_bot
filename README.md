@@ -7,7 +7,7 @@ This DiscordBot can:
 - deleting messages
 - play songs
 
-## You need these packages
+## You need these packages (python 3.+)
 
 - pip install discord.py
 - pip install discord
