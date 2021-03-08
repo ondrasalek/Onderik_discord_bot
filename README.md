@@ -1,16 +1,22 @@
-# DiscordBot
+# DiscordBot ABOUT
 
-1. [Commands](https://github.com/ondrasalek/Onderik_discord_bot#commands-help-command)
-   1. [Admin](https://github.com/ondrasalek/Onderik_discord_botd#admin)
-   2. [Everyone](https://github.com/ondrasalek/Onderik_discord_bot#everyone)
-      - [Info](https://github.com/ondrasalek/Onderik_discord_bot#info)
-      - [Music](https://github.com/ondrasalek/Onderik_discord_bot#music)
+This DiscordBot can:
 
-## Commands `.help <command>`
+- sending welcome and bye messages
+- showing info about members, roles, server, channel and Bot self
+- deleting messages
+- play songs
+
+## You need these packages
+
+- pip install discord.py
+- pip install discord
+- pip install validators
+- pip install youtube_dl
+
+### Commands `.help <command>`
 
 ### Admin
-
-#### Server
 
 COMMAND | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -24,8 +30,6 @@ COMMAND | ABOUT command | Arguments
 `.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)
 
 ### Everyone
-
-#### Info
 
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -45,5 +49,3 @@ COMMANDS | ABOUT command | Arguments
 `.pause` | Pause | .
 `.resume` | Resume | .
 `.stop` | Stop | .
-
-[TOP](https://github.com/ondrasalek/Onderik_discord_bot#discordbot)
