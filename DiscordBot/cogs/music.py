@@ -145,7 +145,7 @@ class Music(commands.Cog, name="Music příkazy"):
                         color = 0xFF1493
                     )
             await ctx.send(embed=embed)
-            await ctx.guild.voice_client.stop()
+            await ctx.guild.voice_client.disconnect()
             
     @commands.command(aliases=["hlasitost"])
     async def volume(self, ctx, volume: int):
