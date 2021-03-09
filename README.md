@@ -1,4 +1,4 @@
-<img src="sources/onderik-bot.png" alt="ONDERIK logo" height="100" >
+<img src="sources/onderik-black.png" alt="ONDERIK logo" height="100" >
 
 # ABOUT
 
