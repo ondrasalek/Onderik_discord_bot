@@ -1,5 +1,14 @@
 <img src="sources/onderik-black.png" alt="banner black" height="100">
 
+<p style="border: 2px solid #ff6347;
+        color: #000000; 
+        font-size: 50px; font-weight: bold;
+        background-color: #ff6347;"> 
+    <img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" alt="under construction" height="100"> 
+    Under construction
+    <img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" alt="under construction" height="100">
+</p>
+
 # ABOUT
 
 [ADD TO YOUR SERVER](https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot)
