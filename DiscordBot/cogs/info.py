@@ -70,6 +70,7 @@ class Info(commands.Cog, name="Info příkazy"):
         embed.add_field(name = "Na kolika serverech jsem?", value=text, inline=False)
         
         embed.add_field(name = "\u200b", value=f"__Chceš mě na svůj server?\nNapiš:__ *`ADD {name}`*", inline=True)
+        embed.add_field(name = "\u200b", value=f"__Chceš vědět, co budu umět?\nNapiš:__ *`SHOW {name}`*", inline=True)
         
         embed.set_footer(text = f"Zavolal: {author}")
         
@@ -86,6 +87,9 @@ class Info(commands.Cog, name="Info příkazy"):
             content = content.upper()
             if content == f"ADD {str(name)}":
                 await channel.send(url_bot)
+                await bot.process_commands(message)
+            if content == f"SHOW {str(name)}":
+                await channel.send(file=discord.File("../src/music_under_construction.png"))
                 await bot.process_commands(message)
 #---------------------------_ROLE_INFO_----------------------------
     @commands.command(aliases=["r", 'role'], 

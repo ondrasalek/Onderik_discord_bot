@@ -1,4 +1,7 @@
-<a><img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" height="200"/></a>
+<a>
+    <img src="src/under_construction.png" height="200"/>
+    <img src="src/music_under_construction.png" height="200"/>
+</a>
 
 <a><img src="src/onderik-black.png" alt="banner black" height="100"></a>
 
