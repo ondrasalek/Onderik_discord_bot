@@ -1,10 +1,6 @@
 <img src="sources/onderik-black.png" alt="banner black" height="100">
 
-<p> 
-    <img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" alt="under construction" height="100"> 
-    Under construction
-    <img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" alt="under construction" height="100">
-</p>
+<a><img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" height="200"/></a>
 
 # ABOUT
 
