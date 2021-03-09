@@ -175,29 +175,30 @@ class Music(commands.Cog, name="Music příkazy"):
         voice_state = member.guild.voice_client
         if voice_state is not None and len(voice_state.channel.members) == 1:
             embed = discord.Embed(
-                            title = "🔇Stop & Disconnect",
+                            title = "🔇Stop & Leaving",
                             color = 0xFF1493
                         )
             await text_channel.send(embed=embed)
             await voice_state.disconnect()
-        elif voice_state is not None:
-            await asyncio.sleep(30) #wait 30 seconds
+            '''elif voice_state is not None:
+            await asyncio.sleep(15) #wait 30 seconds
             try:
                 asyncio.run_coroutine_threadsafe(voice_state.disconnect(), self.bot.loop)
                 voice_state = None
                 embed = discord.Embed(
-                                title = "🔇Disconnect",
+                                title = "🔇Leaving",
                                 description = "Není co hrát",
                                 color = 0xFF1493
                         )
                 asyncio.run_coroutine_threadsafe(text_channel.send(embed=embed),self.bot.loop)
             except AttributeError:
-                pass
+                pass'''
+        
     @commands.command(help="DISCONNECT")
     async def leave(self, ctx):
         if ctx.guild.voice_client.is_connected():
             embed = discord.Embed(
-                            title = "🔇Disconnect",
+                            title = "🔇Leaving",
                             color = 0xFF1493
                         )
             await text_channel.send(embed=embed)

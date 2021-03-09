@@ -37,8 +37,8 @@ initial_extensions = [
 	"cogs.msg_welcome",
  	"cogs.msg_private",
     "cogs.msg_bye",
-    "cogs.music",
     "cogs.command"
+    #"cogs.music",
 ]
 if __name__ == '__main__':
 	for extension in initial_extensions:
