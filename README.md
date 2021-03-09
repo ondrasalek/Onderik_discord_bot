@@ -1,10 +1,6 @@
-<<<<<<< Updated upstream
-# ABOUT
-=======
-<img src="sources/o-1024.png" alt="ONDERIK logo" height="70" >
->>>>>>> Stashed changes
+<img src="sources/onderik-bot.png" alt="ONDERIK logo" height="100" >
 
-# DiscordBot ONDERIK ABOUT
+# ABOUT
 
 [ADD TO YOUR SERVER](https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot)
 
@@ -60,5 +56,5 @@ COMMANDS | ABOUT command | Arguments
 
 What to do | is here
 ------------- | -------------
-If you want welcome and bye messages you should turn on this | ![system messages](sources/system_messages.png)
+If you want welcome and bye messages you should turn on this |<img src="sources/system_messages.png" alt="system messages">
 --|--

@@ -6,3 +6,4 @@ DiscordBot/configuration.json
 *.pyc
 
 *.ini
+sources/logo.psb
