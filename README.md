@@ -1,6 +1,6 @@
 <a><img src="https://pngimg.com/uploads/under_construction/under_construction_PNG66.png" height="200"/></a>
 
-<a><img src="sources/onderik-black.png" alt="banner black" height="100"></a>
+<a><img src="src/onderik-black.png" alt="banner black" height="100"></a>
 
 # ABOUT
 
@@ -62,12 +62,12 @@ COMMANDS | ABOUT command | Arguments
 
 What to do | is here
 ------------- | -------------
-If you want welcome and bye messages you should turn on this |<img src="sources/system_messages.png" alt="system messages">
+If you want welcome and bye messages you should turn on this |<img src="src/system_messages.png" alt="system messages">
 
 # IMAGES
 
 PICTURE | NAME
 ------------- | -------------
-<img src="sources/onderik-black.png" alt="banner black" height="30" >| Banner Black
-<img src="sources/onderik-white.png" alt="banner white" height="30" >| Banner White
-<img src="sources/logo-onderik.png" alt="logo" height="50" >| Logo
+<img src="src/onderik-black.png" alt="banner black" height="30" >| Banner Black
+<img src="src/onderik-white.png" alt="banner white" height="30" >| Banner White
+<img src="src/logo-onderik.png" alt="logo" height="50" >| Logo
