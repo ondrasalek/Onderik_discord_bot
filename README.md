@@ -1,6 +1,10 @@
-# DiscordBot ABOUT
+# DiscordBot ONDERIK ABOUT
 
-This DiscordBot can:
+![LOGO](sources/o-50.png)
+
+[ADD TO YOUR SERVER](https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot)
+
+ONDERIK DiscordBot can:
 
 - sending welcome and bye messages
 - showing info about members, roles, server, channel and Bot self
