@@ -1,4 +1,4 @@
-<img src="sources/onderik-black.png" alt="banner black" height="100" >
+<img src="sources/onderik-black.png" alt="banner black" height="100">
 
 # ABOUT
 
@@ -68,4 +68,4 @@ PICTURE | NAME
 ------------- | -------------
 <img src="sources/onderik-black.png" alt="banner black" height="30" >| Banner Black
 <img src="sources/onderik-white.png" alt="banner white" height="30" >| Banner White
-<img src="sources/logo-onderik.png" alt="banner white" height="50" >| Logo
+<img src="sources/logo-onderik.png" alt="logo" height="50" >| Logo
