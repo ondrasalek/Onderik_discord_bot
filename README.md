@@ -1,4 +1,4 @@
-# DiscordBot ONDERIK ABOUT
+# ABOUT
 
 ![LOGO](sources/o-50.png)
 
