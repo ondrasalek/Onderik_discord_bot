@@ -1,10 +1,10 @@
-<img src="sources/onderik-black.png" alt="ONDERIK logo" height="100" >
+<img src="sources/onderik-black.png" alt="banner black" height="100" >
 
 # ABOUT
 
 [ADD TO YOUR SERVER](https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot)
 
-ONDERIK DiscordBot can:
+Bot can do:
 
 - sending welcome and bye messages
 - showing info about members, roles, server, channel and Bot self
@@ -18,9 +18,9 @@ ONDERIK DiscordBot can:
 - pip install validators
 - pip install youtube_dl
 
-### Commands `.help <command>`
+# Commands `.help <command>`
 
-### Admin
+## Admin
 
 COMMAND | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -33,7 +33,9 @@ COMMAND | ABOUT command | Arguments
 . | . | .
 `.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)
 
-### Everyone
+## Everyone
+
+### - INFO
 
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -45,7 +47,7 @@ COMMANDS | ABOUT command | Arguments
 `.info_user` | Info about You | .
 `.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
 
-#### Music
+### - Music
 
 COMMANDS | ABOUT command | Arguments
 ------------- | ------------- | -------------
@@ -54,7 +56,16 @@ COMMANDS | ABOUT command | Arguments
 `.resume` | Resume | .
 `.stop` | Stop | .
 
+# Guild setting
+
 What to do | is here
 ------------- | -------------
 If you want welcome and bye messages you should turn on this |<img src="sources/system_messages.png" alt="system messages">
---|--
+
+# IMAGES
+
+PICTURE | NAME
+------------- | -------------
+<img src="sources/onderik-black.png" alt="banner black" height="30" >| Banner Black
+<img src="sources/onderik-white.png" alt="banner white" height="30" >| Banner White
+<img src="sources/logo-onderik.png" alt="banner white" height="50" >| Logo
