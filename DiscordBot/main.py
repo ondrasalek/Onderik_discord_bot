@@ -13,16 +13,16 @@ import json
 import os
 from dotenv import load_dotenv
 
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 load_dotenv()
-
 token = os.getenv("token")
-#------------------------------------------------------------------
-#------------------------------------------------------------------
+prefix = os.getenv("prefix")
 # Get configuration.json
-with open("configuration.json", "r") as config: 
+'''with open("configuration.json", "r") as config: 
 	data = json.load(config)
-	#token = data["token"]
-	prefix = data["prefix"]
+	token = data["token"]
+	prefix = data["prefix"]'''
 	
 prefix_help = f"{prefix}command"
 #custom_prefix = {}
