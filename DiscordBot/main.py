@@ -78,27 +78,30 @@ async def on_ready():
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f, indent=4)
         f.close()
-
+   
 @bot.event
-async def on_guild_join(ctx):
-    guilds = bot.guilds
-    for guild in guilds:
-        guild_dict = {
-					"GuildID": guild.id,
-					"GuildName":guild.name,
-					"Autorole": "",
-					"URL": "", 
-					"BotLog": "",
-					"WelcomeMSG": "",
-					"PrivateMSG": "",
-                    "ByeMSG": ""
-        			}
-        try:
-            f = open(f"guilds/{guild.id}.json", "r")
-        except:
-            f = open(f"guilds/{guild.id}.json", "w")
-            json.dump(guild_dict, f, indent=4)
-        f.close()
+async def on_guild_join(guild):
+    guild_dict = {
+				"GuildID": guild.id,
+				"GuildName":guild.name,
+				"Autorole": "",
+				"URL": "", 
+				"BotLog": "",
+				"WelcomeMSG": "",
+				"PrivateMSG": "",
+                "ByeMSG": ""
+        		}
+    try:
+        f = open(f"guilds/{guild.id}.json", "r")
+    except:
+        f = open(f"guilds/{guild.id}.json", "w")
+        json.dump(guild_dict, f, indent=4)
+    f.close()
+        
+@bot.event
+async def on_guild_remove(guild):
+	if os.path.exists(f"guilds/{guild.id}.json"):
+		os.remove(f"guilds/{guild.id}.json")
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)
