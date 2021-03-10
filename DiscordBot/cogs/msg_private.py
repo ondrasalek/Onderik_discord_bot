@@ -45,6 +45,8 @@ class Private(commands.Cog):
                     await member.send(embed=embedPM)
                 except discord.errors.Forbidden:
                     pass
+                except discord.errors.HTTPException:
+                    pass
         except KeyError:
             pass
         f.close()
