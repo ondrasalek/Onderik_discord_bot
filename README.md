@@ -1,7 +1,7 @@
-<a>
+<p>
     <img src="src/under_construction.png" height="200"/>
     <img src="src/music_under_construction.png" height="200"/>
-</a>
+</p>
 
 <a><img src="src/onderik-black.png" alt="banner black" height="100"></a>
 
@@ -18,10 +18,35 @@ Bot can do:
 
 ## You need these packages (python 3.+)
 
-- pip install discord.py
-- pip install discord
-- pip install validators
-- pip install youtube_dl
+```
+pip install discord.py
+pip install discord
+pip install validators
+pip install youtube_dl
+pip install python-dotenv
+```
+
+## You can choose what you want to use
+
+1. .ENV
+
+```javascript
+import os
+from dotenv import load_dotenv
+load_dotenv()
+token = os.getenv("token")
+prefix = os.getenv("prefix")
+```
+
+2. JSON
+
+```javascript
+import json
+with open("configuration.json", "r") as config: 
+ data = json.load(config)
+ token = data["token"]
+ prefix = data["prefix"]
+```
 
 # Commands `.help <command>`
 

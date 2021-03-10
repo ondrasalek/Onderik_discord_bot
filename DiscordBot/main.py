@@ -9,11 +9,10 @@ Created on Tue Jan 26 21:44:42 2021
 import discord
 from discord.ext import commands
 import json
-
+#------------------------------------------------------------------
+#------------------------------------------------------------------
 import os
 from dotenv import load_dotenv
-#------------------------------------------------------------------
-#------------------------------------------------------------------
 load_dotenv()
 token = os.getenv("token")
 prefix = os.getenv("prefix")
