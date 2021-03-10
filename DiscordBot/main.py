@@ -73,7 +73,12 @@ async def on_ready():
 					"ByeMSG": ""
 					}
         try:
-            f = open(f"guilds/{guild.id}.json", "r")
+            f = open(f"guilds/{guild.id}.json", "r+")
+            data = json.load(f)
+            data["GuildName"] = guild.name
+            f.seek(0)
+            json.dump(data, f, indent=4)
+            f.truncate()
         except:
             f = open(f"guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f, indent=4)
