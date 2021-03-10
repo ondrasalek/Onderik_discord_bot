@@ -9,12 +9,19 @@ Created on Tue Jan 26 21:44:42 2021
 import discord
 from discord.ext import commands
 import json
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
+token = os.getenv("token")
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 # Get configuration.json
 with open("configuration.json", "r") as config: 
 	data = json.load(config)
-	token = data["token"]
+	#token = data["token"]
 	prefix = data["prefix"]
 	
 prefix_help = f"{prefix}command"
