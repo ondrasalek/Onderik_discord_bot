@@ -3,7 +3,7 @@
     <img src="src/music_under_construction.png" height="200"/>
 </p>
 
-<a><img src="src/onderik-black.png" alt="banner black" height="100"></a>
+<p><img src="src/onderik-black.png" alt="banner black" height="100"></p>
 
 # ABOUT
 
@@ -18,7 +18,7 @@ Bot can do:
 
 ## You need these packages (python 3.+)
 
-```
+```shell
 pip install discord.py
 pip install discord
 pip install validators
@@ -30,7 +30,7 @@ pip install python-dotenv
 
 1. .ENV
 
-```javascript
+```python
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -40,7 +40,7 @@ prefix = os.getenv("prefix")
 
 2. JSON
 
-```javascript
+```python
 import json
 with open("configuration.json", "r") as config: 
  data = json.load(config)
@@ -52,50 +52,50 @@ with open("configuration.json", "r") as config:
 
 ## Admin
 
-COMMAND | ABOUT command | Arguments
-------------- | ------------- | -------------
-`.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`
-`.set_botlog <channel>` | Setting channel BotLog | `<channel name / id / #mention>` & `"now"`
-`.set_guild_url <url>` | Setting url link to server | `"<url>"` & `"now"`
-`.set_msg_private <message>` | Setting Private welcome message (max 255 chars) | `"<message>"` & `"now"`
-`.set_msg_welcome <message>` | Setting Channel Welcome message (max 255 chars) | `"<message>"` & `"now"`
-`.set_msg_bye <message>` | Setting Channel Bye message (max 255 chars) | `"<message>"` & `"now"`
-. | . | .
-`.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)
+|COMMAND | ABOUT command | Arguments|
+|:---  | :---  | :--- |
+|`.set_autorole <role>` | Setting auto role | `<role name / id / @mention>` & `"now"`|
+|`.set_botlog <channel>` | Setting channel BotLog | `<channel name / id / #mention>` & `"now"`|
+|`.set_guild_url <url>` | Setting url link to server | `"<url>"` & `"now"`|
+|`.set_msg_private <message>` | Setting Private welcome message (max 255 chars) | `"<message>"` & `"now"`|
+|`.set_msg_welcome <message>` | Setting Channel Welcome message (max 255 chars) | `"<message>"` & `"now"`|
+|`.set_msg_bye <message>` | Setting Channel Bye message (max 255 chars) | `"<message>"` & `"now"`|
+|. | . | .|
+|`.clear <number>` | Delete number of messages (max 333) | `<number>` (1-333)|
 
 ## Everyone
 
 ### - INFO
 
-COMMANDS | ABOUT command | Arguments
-------------- | ------------- | -------------
-`.info_bot` | Info about BOT | .
-`.info_channel` | Info about Channel | .
-`.info_server` | Info about Server | .
-`.info_role` | Info about Role | .
-`.info_role <role>` | List of members if Role | `<role name / id / @mention>`
-`.info_user` | Info about You | .
-`.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`
+|COMMANDS | ABOUT command | Arguments|
+:---  | :---  | :--- |
+|`.info_bot` | Info about BOT | .|
+|`.info_channel` | Info about Channel | .|
+|`.info_server` | Info about Server | .|
+|`.info_role` | Info about Role | .|
+|`.info_role <role>` | List of members if Role | `<role name / id / @mention>`|
+|`.info_user` | Info about You | .|
+|`.info_user <user>` | Info about Member | `<user name / nick / id / @mention>`|
 
 ### - Music
 
-COMMANDS | ABOUT command | Arguments
-------------- | ------------- | -------------
-`.play` | Play song (YouTube) | `<URL / name / author...>`
-`.pause` | Pause | .
-`.resume` | Resume | .
-`.stop` | Stop | .
+|COMMANDS | ABOUT command | Arguments|
+:---  | :---  | :--- |
+|`.play` | Play song (YouTube) | `<URL / name / author...>`|
+|`.pause` | Pause | .|
+|`.resume` | Resume | .|
+|`.stop` | Stop | .|
 
 # Guild setting
 
-What to do | is here
-------------- | -------------
-If you want welcome and bye messages you should turn on this |<img src="src/system_messages.png" alt="system messages">
+|What to do | is here|
+:---  | :--- |
+|If you want welcome and bye messages you should turn on this |<img src="src/system_messages.png" alt="system messages">|
 
 # IMAGES
 
-PICTURE | NAME
-------------- | -------------
-<img src="src/onderik-black.png" alt="banner black" height="30" >| Banner Black
-<img src="src/onderik-white.png" alt="banner white" height="30" >| Banner White
-<img src="src/logo-onderik.png" alt="logo" height="50" >| Logo
+|PICTURE | NAME|
+:---:  | :--- |
+|<img src="src/onderik-black.png" alt="banner black" height="30" >| Banner Black|
+|<img src="src/onderik-white.png" alt="banner white" height="30" >| Banner White|
+|<img src="src/logo-onderik.png" alt="logo" height="50" >| Logo|
