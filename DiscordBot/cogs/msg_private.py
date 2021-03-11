@@ -15,7 +15,7 @@ class Private(commands.Cog):
         
         pcolor = 0xa4edd1 
         
-        f = open(f"guilds/{guild.id}.json", "r")
+        f = open(f"./guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             pmsg = data["PrivateMSG"]

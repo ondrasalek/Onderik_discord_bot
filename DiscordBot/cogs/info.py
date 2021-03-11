@@ -16,7 +16,7 @@ class Info(commands.Cog, name="Info příkazy"):
     async def info_bot(self, ctx):
         guild = ctx.guild
 
-        f = open("configuration.json", "r")
+        f = open("./configuration.json", "r")
         data = json.load(f)
         prefix = data["prefix"]
         f.close()
@@ -41,7 +41,7 @@ class Info(commands.Cog, name="Info příkazy"):
         embed.add_field(name="Vznikl", value=created, inline=True)
         embed.add_field(name="Nabídka příkazů", value=prikaz, inline=True)
 
-        f = open(f"guilds/{guild.id}.json", "r")
+        f = open(f"./guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             autorole = data["Autorole"]
@@ -197,7 +197,7 @@ class Info(commands.Cog, name="Info příkazy"):
         TChannels = len(guild.text_channels)
         VChannels = len(guild.voice_channels)
 
-        f = open(f"guilds/{guild.id}.json", "r")
+        f = open(f"./guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             url = data["URL"]

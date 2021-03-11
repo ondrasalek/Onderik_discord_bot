@@ -11,17 +11,17 @@ from discord.ext import commands
 import json
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-import os
+'''import os
 from dotenv import load_dotenv
 load_dotenv()
 token = os.getenv("token")
-prefix = os.getenv("prefix")
-'''
+prefix = os.getenv("prefix")'''
+
 with open("configuration.json", "r") as config: 
- data = json.load(config)
- token = data["token"]
- prefix = data["prefix"]
-'''
+	data = json.load(config)
+	token = data["token"]
+	prefix = data["prefix"]
+
 prefix_help = f"{prefix}command"
 #custom_prefix = {}
 #------------------------------------------------------------------
@@ -73,14 +73,14 @@ async def on_ready():
 					"ByeMSG": ""
 					}
         try:
-            f = open(f"guilds/{guild.id}.json", "r+")
+            f = open(f"./guilds/{guild.id}.json", "r+")
             data = json.load(f)
             data["GuildName"] = guild.name
             f.seek(0)
             json.dump(data, f, indent=4)
             f.truncate()
         except:
-            f = open(f"guilds/{guild.id}.json", "w")
+            f = open(f"./guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f, indent=4)
         f.close()
    
@@ -97,16 +97,16 @@ async def on_guild_join(guild):
                 "ByeMSG": ""
         		}
     try:
-        f = open(f"guilds/{guild.id}.json", "r")
+        f = open(f"./guilds/{guild.id}.json", "r")
     except:
-        f = open(f"guilds/{guild.id}.json", "w")
+        f = open(f"./guilds/{guild.id}.json", "w")
         json.dump(guild_dict, f, indent=4)
     f.close()
         
 @bot.event
 async def on_guild_remove(guild):
-	if os.path.exists(f"guilds/{guild.id}.json"):
-		os.remove(f"guilds/{guild.id}.json")
+	if os.path.exists(f"./guilds/{guild.id}.json"):
+		os.remove(f"./guilds/{guild.id}.json")
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)
