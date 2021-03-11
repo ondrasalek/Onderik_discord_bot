@@ -83,14 +83,14 @@ class Music(commands.Cog, name="Music příkazy"):
                         #player = await YTDLSource.from_url(url, loop=self.bot.loop) #download
                         ctx.voice_client.play(player, after=lambda e: print('Player error: %s' % e) if e else None)
                 
-                    this = str(f"""**```fix\n{player.title}```**""")
-                    
-                    embed = discord.Embed(color = 0xFF1493)
-                    embed.add_field(name=f"Právě hraje",value=this,inline=False)
-                    embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
-                    await ctx.send(embed=embed)
-                    
-                    text_channel = ctx.channel
+                        this = str(f"""**```fix\n{player.title}```**""")
+                        
+                        embed = discord.Embed(color = 0xFF1493)
+                        embed.add_field(name=f"Právě hraje",value=this,inline=False)
+                        embed.add_field(name="\u200b",value=f"🔊🎶`{ctx.author.voice.channel}`",inline=False)
+                        await ctx.send(embed=embed)
+                        
+                        text_channel = ctx.channel
                 else:
                     embed= discord.Embed(
                         title = "Nejste připojeni v voice channelu.",
