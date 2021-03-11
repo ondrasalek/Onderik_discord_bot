@@ -20,7 +20,7 @@ class Info(commands.Cog, name="Info příkazy"):
         data = json.load(f)
         prefix = data["prefix"]
         f.close()
-        prikaz = f"{prefix}command"
+        prikaz = f"`{prefix}command`"
 
         bot = self.bot
         b_bot = bot.user
