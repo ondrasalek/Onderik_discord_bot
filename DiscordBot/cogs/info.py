@@ -20,7 +20,7 @@ class Info(commands.Cog, name="Info příkazy"):
         data = json.load(f)
         prefix = data["prefix"]
         f.close()
-        prikaz = f"{prefix}help"
+        prikaz = f"{prefix}command"
 
         bot = self.bot
         b_bot = bot.user
@@ -40,30 +40,6 @@ class Info(commands.Cog, name="Info příkazy"):
         embed.set_thumbnail(url=avatar_url)
         embed.add_field(name="Vznikl", value=created, inline=True)
         embed.add_field(name="Nabídka příkazů", value=prikaz, inline=True)
-
-        f = open(f"./guilds/{guild.id}.json", "r")
-        data = json.load(f)
-        try:
-            autorole = data["Autorole"]
-            if autorole == "":
-                autorole = None
-            else:
-                autorole = discord.utils.get(guild.roles, id=autorole)
-                autorole = autorole.mention
-                embed.add_field(name='Automatícká role:', value=autorole, inline=False)
-        except KeyError:
-            autorole=None
-        try:
-            botlog = data["BotLog"]
-            if botlog == "":
-                botlog = None
-            else:
-                botlog = discord.utils.get(guild.channels, id=botlog)
-                botlog=botlog.mention
-                embed.add_field(name='BotLog Channel', value=botlog, inline=False)
-        except KeyError:
-            botlog = None
-        f.close()
 
         guilds = len(self.bot.guilds)
         text = str(f"""```json\nJsem na {guilds} serverech.```""")
@@ -245,7 +221,17 @@ class Info(commands.Cog, name="Info příkazy"):
                 autorole = autorole.mention
                 embed.add_field(name='Automatícká role:', value=autorole, inline=False)
         except KeyError:
-            autorole = None
+            autorole=None
+        try:
+            botlog = data["BotLog"]
+            if botlog == "":
+                botlog = None
+            else:
+                botlog = discord.utils.get(guild.channels, id=botlog)
+                botlog=botlog.mention
+                embed.add_field(name='BotLog Channel', value=botlog, inline=False)
+        except KeyError:
+            botlog = None
         f.close()
 
         await ctx.send(embed=embed)
