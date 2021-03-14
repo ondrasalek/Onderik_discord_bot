@@ -18,6 +18,7 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
                 embed = discord.Embed(
                             #title = f"__{self.bot.user.name}__ HELP", 
                             title = "**List všech příkazů**",
+                            url="https://discord.gg/bHMn2FSga7",
                             color = 0x66ffcc
                         )
                 for cog in self.bot.cogs:
