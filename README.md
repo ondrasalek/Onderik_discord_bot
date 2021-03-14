@@ -1,9 +1,9 @@
 <p>
-    <img src="src/under_construction.png" height="200"/>
-    <img src="src/music_under_construction.png" height="200"/>
+    <img src="./src/under_construction.png" height="200"/>
+    <img src="./src/music_under_construction.png" height="200"/>
 </p>
 
-<p><img src="src/onderik-black.png" alt="banner black" height="100"></p>
+<p><img src="./src/onderik-black.png" alt="banner black" height="100"></p>
 
 # ABOUT
 
@@ -92,12 +92,12 @@ with open("configuration.json", "r") as config:
 
 |What to do | is here|
 :---  | :--- |
-|If you want welcome and bye messages you should turn on this |<img src="src/system_messages.png" alt="system messages">|
+|If you want welcome and bye messages you should turn on this |<img src="./src/system_messages.png" alt="system messages">|
 
 # IMAGES
 
 |PICTURE | NAME|
 :---:  | :--- |
-|<img src="src/onderik-black.png" alt="banner black" height="30" >| Banner Black|
-|<img src="src/onderik-white.png" alt="banner white" height="30" >| Banner White|
-|<img src="src/logo-onderik.png" alt="logo" height="50" >| Logo|
+|<img src="./src/onderik-black.png" alt="banner black" height="30" >| Banner Black|
+|<img src="./src/onderik-white.png" alt="banner white" height="30" >| Banner White|
+|<img src="./src/logo-onderik.png" alt="logo" height="50" >| Logo|
