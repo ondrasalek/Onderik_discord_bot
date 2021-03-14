@@ -8,6 +8,8 @@
 # ABOUT
 
 [ADD TO YOUR SERVER](https://discord.com/api/oauth2/authorize?client_id=804733813976203284&permissions=8&scope=bot)
+[Onderik WEBSITE](https://ondrasalek.github.io/onderik/)
+[Discord server Onderik-Support](https://ondrasalek.github.io/onderik/)
 
 Bot can do:
 
