@@ -30,7 +30,7 @@ intents = discord.Intents.default()
 intents.members = True
 
 bot = commands.Bot(command_prefix=[prefix], intents = intents)
-   #TODO: MAKE ADMINS TO CHOOSING PREFIX
+   #TODO: MAKE ADMINS TO CHOOSE PREFIX
 
 #------------------------------------------------------------------
 # Load cogs
