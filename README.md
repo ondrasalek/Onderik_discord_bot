@@ -11,7 +11,7 @@
 
 [Onderik WEBSITE](https://ondrasalek.github.io/onderik/)
 
-[Discord server Onderik-Support](https://ondrasalek.github.io/onderik/)
+[Discord Support Server -> Onderik-Support](https://ondrasalek.github.io/onderik/)
 
 Bot can do:
 
