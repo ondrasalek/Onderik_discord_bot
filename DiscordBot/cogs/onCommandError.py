@@ -8,13 +8,14 @@ class OnCommandErrorCog(commands.Cog, name="on command error"):
 	@commands.Cog.listener()
 	async def on_command_error(self, ctx, error):
 		if isinstance(error, commands.CommandNotFound):
-			embed = discord.Embed(
+			pass
+			"""embed = discord.Embed(
 				title = 'ERROR',
 				description='Neznámý příkaz!',
 				color = discord.Colour.dark_red()
 			)
-			embed.add_field(name='Zkuste:', value='!help')
 			await ctx.send(embed=embed)
+   			"""
 		elif isinstance(error, commands.MissingPermissions):
 				embed= discord.Embed(
 					title = "Nedostatečné pravomoce!",
