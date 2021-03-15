@@ -3,7 +3,7 @@
     <img src="./src/music_under_construction.png" height="200"/>
 </p>
 
-<p><img src="./src/onderik-black.png" alt="banner black" height="100"></p>
+<p><img src="./src/banner-black.png" alt="banner black" height="100"></p>
 
 # ABOUT
 
