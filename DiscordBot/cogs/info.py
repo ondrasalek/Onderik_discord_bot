@@ -16,10 +16,10 @@ class Info(commands.Cog, name="Info příkazy"):
     async def info_bot(self, ctx):
         guild = ctx.guild
 
-        f = open("./configuration.json", "r")
-        data = json.load(f)
-        prefix = data["prefix"]
-        f.close()
+        f = open(f"./prefixes.json", "r+")
+        prefixes = json.load(f)
+        prefix = prefixes[str(guild.id)]
+        f.close
         prikaz = f"`{prefix}command`"
 
         bot = self.bot
@@ -48,6 +48,7 @@ class Info(commands.Cog, name="Info příkazy"):
         embed.add_field(name = "\u200b", value=f"__Chceš mě na svůj server?\nNapiš:__ *`ADD {name}`*", inline=True)
         embed.add_field(name = "\u200b", value=f"__Chceš vědět, co budu umět?\nNapiš:__ *`SHOW {name}`*", inline=True)
         embed.add_field(name = "\u200b", value=f"__PODPORA?\nNapiš:__ *`PODPORA {name}`*",inline=False)
+        embed.add_field(name = "\u200b", value=f"__Prefix?\nNapiš:__ *`PODPORA {name}`*",inline=False)
 
         embed.set_footer(text = f"Zavolal: {author}")
         
@@ -75,8 +76,9 @@ class Info(commands.Cog, name="Info příkazy"):
             if content == f"PREFIX {str(name)}":
                 f = open(f"./prefixes.json", "r+")
                 prefixes = json.load(f)
-                pref = prefixes[str(guild.id)]
-                await channel.send(f"Prefix na serveru je `{pref}`")
+                prefix = prefixes[str(guild.id)]
+                f.close
+                await channel.send(f"Prefix na serveru je `{prefix}`")
                 await bot.process_commands(message)
 #---------------------------_ROLE_INFO_----------------------------
     @commands.command(aliases=["r", 'role'], 
