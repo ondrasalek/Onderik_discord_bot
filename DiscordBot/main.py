@@ -20,16 +20,20 @@ prefix = os.getenv("prefix")'''
 with open("configuration.json", "r") as config: 
 	data = json.load(config)
 	token = data["token"]
-	prefix = data["prefix"]
+	def_prefix = data["prefix"]
 
-prefix_help = f"{prefix}command"
-#custom_prefix = {}
+prefix_help = f"{def_prefix}command"
+
+def get_prefix(bot, message):
+    f = open("./prefixes.json", "r")
+    prefixes = json.load(f)
+    return prefixes[str(message.guild.id)]
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
 intents.members = True
 
-bot = commands.Bot(command_prefix=[prefix], intents = intents)
+bot = commands.Bot(command_prefix=(get_prefix), intents = intents)
    #TODO: MAKE ADMINS TO CHOOSE PREFIX
 
 #------------------------------------------------------------------
@@ -58,20 +62,10 @@ game = discord.Game(name=f"🤖{prefix_help}🤖")
 async def on_ready():
     print(f'{bot.user.name} online 🟢')
     print(f"Discord version: {discord.__version__}")
-    await bot.change_presence(activity=game)
+    #await bot.change_presence(activity=game)
 	#------------------------------------------------------------------
     guilds = bot.guilds
     for guild in guilds:
-        guild_dict = {
-					"GuildID": guild.id,
-     				"GuildName":guild.name,
-					"Autorole": "",
-					"URL": "", 
-					"BotLog": "",
-					"WelcomeMSG": "",
-					"PrivateMSG": "",
-					"ByeMSG": ""
-					}
         try:
             f = open(f"./guilds/{guild.id}.json", "r+")
             data = json.load(f)
@@ -83,8 +77,34 @@ async def on_ready():
                 json.dump(data, f, indent=4)
                 f.truncate()
         except:
+            guild_dict = {
+					"GuildID": guild.id,
+     				"GuildName":guild.name,
+					"Autorole": "",
+					"URL": "", 
+					"BotLog": "",
+					"WelcomeMSG": "",
+					"PrivateMSG": "",
+					"ByeMSG": ""
+					}
             f = open(f"./guilds/{guild.id}.json", "w")
             json.dump(guild_dict, f, indent=4)
+        f.close()
+        try:
+            f = open(f"./prefixes.json", "r+")
+            prefixes = json.load(f)
+            if str(guild.id) in prefixes:
+                pass
+            else:
+                prefixes[str(guild.id)] = def_prefix
+                f.seek(0)
+                json.dump(prefixes, f, indent=4)
+                f.truncate()
+        except:
+            prefixes = {}
+            f = open(f"./prefixes.json", "w")
+            prefixes[str(guild.id)] = def_prefix
+            json.dump(prefixes, f, indent=4)
         f.close()
    
 @bot.event
@@ -105,11 +125,43 @@ async def on_guild_join(guild):
         f = open(f"./guilds/{guild.id}.json", "w")
         json.dump(guild_dict, f, indent=4)
     f.close()
-        
+    
+    try:
+        f = open(f"./prefixes.json", "r+")
+        prefixes = json.load(f)
+        if str(guild.id) in prefixes:
+            pass
+        else:
+            prefixes[str(guild.id)] = def_prefix
+            f.seek(0)
+            json.dump(prefixes, f, indent=4)
+            f.truncate()
+    except:
+        prefixes = {}
+        f = open(f"./prefixes.json", "w")
+        prefixes[str(guild.id)] = def_prefix
+        json.dump(prefixes, f, indent=4)
+    f.close()
+
 @bot.event
 async def on_guild_remove(guild):
-	if os.path.exists(f"./guilds/{guild.id}.json"):
-		os.remove(f"./guilds/{guild.id}.json")
+    if os.path.exists(f"./guilds/{guild.id}.json"):
+        os.remove(f"./guilds/{guild.id}.json")
+        
+    try:
+        f = open(f"./prefixes.json", "r+")
+        prefixes = json.load(f)
+        if str(guild.id) in prefixes:
+            prefixes.pop(str(guild.id))
+            f.seek(0)
+            json.dump(prefixes, f, indent=4)
+            f.truncate()
+    except:
+        prefixes = {}
+        f = open(f"./prefixes.json", "w")
+        prefixes[str(guild.id)] = def_prefix
+        json.dump(prefixes, f, indent=4)
+    f.close()
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 bot.run(token)

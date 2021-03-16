@@ -8,6 +8,25 @@ import validators
 class Server(commands.Cog, name="Server příkazy"):
     def __init__(self, bot):
         self.bot = bot
+#------------------------------PREFIX------------------------------
+    @commands.command(aliases=["prefix"],
+					help = "Změnit prefix.",
+                    )
+    @commands.has_permissions(administrator = True)
+    async def change_prefix(self, ctx, prefix):
+        try:
+            f = open(f"./prefixes.json", "r+")
+            prefixes = json.load(f)
+            prefixes[str(ctx.guild.id)] = prefix
+            
+            f.seek(0)
+            json.dump(prefixes, f, indent=4)
+            f.truncate()
+            f.close()
+            
+            await ctx.send(f"Prefix changed to: `{prefix}`")
+        except:
+            pass
 #----------------------------_AUTOROLE_----------------------------
     @commands.command(aliases=["ar","autorole"],
 					help = "Nastavit automatickou roli.",
