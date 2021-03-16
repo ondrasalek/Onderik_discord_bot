@@ -48,7 +48,7 @@ class Info(commands.Cog, name="Info příkazy"):
         embed.add_field(name = "\u200b", value=f"__Chceš mě na svůj server?\nNapiš:__ *`ADD {name}`*", inline=True)
         embed.add_field(name = "\u200b", value=f"__Chceš vědět, co budu umět?\nNapiš:__ *`SHOW {name}`*", inline=True)
         embed.add_field(name = "\u200b", value=f"__PODPORA?\nNapiš:__ *`PODPORA {name}`*",inline=False)
-        embed.add_field(name = "\u200b", value=f"__Prefix?\nNapiš:__ *`PODPORA {name}`*",inline=False)
+        embed.add_field(name = "\u200b", value=f"__Jaký je prefix?\nNapiš:__ *`PREFIX {name}`*",inline=False)
 
         embed.set_footer(text = f"Zavolal: {author}")
         
