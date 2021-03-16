@@ -11,7 +11,6 @@ from discord.ext import commands
 import json
 import os
 import datetime
-
 #------------------------------------------------------------------
 #------------------------------------------------------------------
 '''from dotenv import load_dotenv
@@ -57,19 +56,6 @@ if __name__ == '__main__':
 			print(f"Failed to load extension {extension}")
    #TODO: MAKE EXTENSIONS TO CHOOSING
 #-----------------------_ON_READY_---------------------------------
-"""
-# Setting `Playing ` status
-await bot.change_presence(activity=discord.Game(name="a game"))
-
-# Setting `Streaming ` status
-await bot.change_presence(activity=discord.Streaming(name="My Stream", url=my_twitch_url))
-
-# Setting `Listening ` status
-await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.listening, name="a song"))
-
-# Setting `Watching ` status
-await bot.change_presence(activity=discord.Activity(type=discord.ActivityType.watching, name="a movie"))
-"""
 @bot.event
 async def on_ready():
     guilds = bot.guilds
@@ -77,7 +63,8 @@ async def on_ready():
     print(f"> ({len(guilds)}) guilds")
     print(f"Discord version: {discord.__version__}")
         
-    watch = discord.Activity(type=discord.ActivityType.watching, name=f"{len(guilds)} Servers")
+    watch = discord.Activity(type=discord.ActivityType.watching, name=f"{len(guilds)}.Servers")
+    #listening = discord.Activity(type=discord.ActivityType.listening, name=f"PREFIX {bot.user.name}")
     await bot.change_presence(activity=watch)
 	#------------------------------------------------------------------
     for guild in guilds:
@@ -121,7 +108,7 @@ async def on_ready():
             prefixes[str(guild.id)] = def_prefix
             json.dump(prefixes, f, indent=4)
         f.close()
-   
+
 @bot.event
 async def on_guild_join(guild):
     guilds = bot.guilds
