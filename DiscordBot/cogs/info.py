@@ -53,13 +53,14 @@ class Info(commands.Cog, name="Info příkazy"):
         
         await ctx.send(embed=embed)
         
-    # ON MESSAGE "ADD BOT NAME" SHOW URL TO ADD BOT 
+    # ON MESSAGE
     @commands.Cog.listener()
     async def on_message(self, message):
         bot = self.bot
         if message.author.bot is False:
             content = message.content
             channel = message.channel
+            guild = message.guild
             name = bot.user.name
             content = content.upper()
             if content == f"ADD {str(name)}":
@@ -70,6 +71,12 @@ class Info(commands.Cog, name="Info příkazy"):
                 await bot.process_commands(message)
             if content == f"PODPORA {str(name)}":
                 await channel.send("https://discord.gg/bHMn2FSga7")
+                await bot.process_commands(message)
+            if content == f"PREFIX {str(name)}":
+                f = open(f"./prefixes.json", "r+")
+                prefixes = json.load(f)
+                pref = prefixes[str(guild.id)]
+                await channel.send(f"Prefix na serveru je `{pref}`")
                 await bot.process_commands(message)
 #---------------------------_ROLE_INFO_----------------------------
     @commands.command(aliases=["r", 'role'], 
