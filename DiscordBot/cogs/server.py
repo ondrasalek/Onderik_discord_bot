@@ -15,7 +15,7 @@ class Server(commands.Cog, name="Server příkazy"):
     @commands.has_permissions(administrator = True)
     async def change_prefix(self, ctx, prefix):
         try:
-            f = open(f"./prefixes.json", "r+")
+            f = open(f"./guilds/prefixes.json", "r+")
             prefixes = json.load(f)
             prefixes[str(ctx.guild.id)] = prefix
             

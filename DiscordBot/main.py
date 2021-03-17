@@ -24,7 +24,7 @@ with open("configuration.json", "r") as config:
 	def_prefix = data["prefix"]
 
 def get_prefix(bot, message):
-    f = open("./prefixes.json", "r")
+    f = open("./guilds/prefixes.json", "r")
     prefixes = json.load(f)
     return prefixes[str(message.guild.id)]
 #------------------------------------------------------------------
@@ -93,7 +93,7 @@ async def on_ready():
             json.dump(guild_dict, f, indent=4)
         f.close()
         try:
-            f = open(f"./prefixes.json", "r+")
+            f = open(f"./guilds/prefixes.json", "r+")
             prefixes = json.load(f)
             if str(guild.id) in prefixes:
                 pass
@@ -104,7 +104,7 @@ async def on_ready():
                 f.truncate()
         except:
             prefixes = {}
-            f = open(f"./prefixes.json", "w")
+            f = open(f"./guilds/prefixes.json", "w")
             prefixes[str(guild.id)] = def_prefix
             json.dump(prefixes, f, indent=4)
         f.close()
@@ -132,7 +132,7 @@ async def on_guild_join(guild):
     f.close()
     
     try:
-        f = open(f"./prefixes.json", "r+")
+        f = open(f"./guilds/prefixes.json", "r+")
         prefixes = json.load(f)
         if str(guild.id) in prefixes:
             pass
@@ -143,7 +143,7 @@ async def on_guild_join(guild):
             f.truncate()
     except:
         prefixes = {}
-        f = open(f"./prefixes.json", "w")
+        f = open(f"./guilds/prefixes.json", "w")
         prefixes[str(guild.id)] = def_prefix
         json.dump(prefixes, f, indent=4)
     f.close()
@@ -182,7 +182,7 @@ async def on_guild_remove(guild):
         os.remove(f"./guilds/{guild.id}.json")
         
     try:
-        f = open(f"./prefixes.json", "r+")
+        f = open(f"./guilds/prefixes.json", "r+")
         prefixes = json.load(f)
         if str(guild.id) in prefixes:
             prefixes.pop(str(guild.id))
@@ -191,7 +191,7 @@ async def on_guild_remove(guild):
             f.truncate()
     except:
         prefixes = {}
-        f = open(f"./prefixes.json", "w")
+        f = open(f"./guilds/prefixes.json", "w")
         prefixes[str(guild.id)] = def_prefix
         json.dump(prefixes, f, indent=4)
     f.close()
