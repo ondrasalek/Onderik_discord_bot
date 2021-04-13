@@ -26,7 +26,10 @@ with open("configuration.json", "r") as config:
 def get_prefix(bot, message):
     f = open("./guilds/prefixes.json", "r")
     prefixes = json.load(f)
-    return prefixes[str(message.guild.id)]
+    try:
+        return prefixes[str(message.guild.id)]
+    except AttributeError:
+        pass
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
@@ -63,9 +66,10 @@ async def on_ready():
     print(f"> ({len(guilds)}) guilds")
     print(f"Discord version: {discord.__version__}")
         
-    watch = discord.Activity(type=discord.ActivityType.watching, name=f"{len(guilds)}.Servers")
+    #watch = discord.Activity(type=discord.ActivityType.watching, name=f"{len(guilds)}.Servers")
     #listening = discord.Activity(type=discord.ActivityType.listening, name=f"PREFIX {bot.user.name}")
-    await bot.change_presence(activity=watch)
+    playing = discord.Activity(type=discord.ActivityType.playing, name=f"Podpora")
+    await bot.change_presence(activity=playing)
 	#------------------------------------------------------------------
     for guild in guilds:
         try:
@@ -171,6 +175,8 @@ async def on_guild_join(guild):
         channel = guild.system_channel
         await channel.send(embed=embed)
     except AttributeError:
+        pass
+    except discord.errors.Forbidden:
         pass
     
 @bot.event
