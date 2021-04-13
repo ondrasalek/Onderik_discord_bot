@@ -68,7 +68,7 @@ async def on_ready():
         
     #watch = discord.Activity(type=discord.ActivityType.watching, name=f"{len(guilds)}.Servers")
     #listening = discord.Activity(type=discord.ActivityType.listening, name=f"PREFIX {bot.user.name}")
-    playing = discord.Activity(type=discord.ActivityType.playing, name=f"Podpora")
+    playing = discord.Activity(type=discord.ActivityType.playing, name=f"PREFIX ONDERIK")
     await bot.change_presence(activity=playing)
 	#------------------------------------------------------------------
     for guild in guilds:
