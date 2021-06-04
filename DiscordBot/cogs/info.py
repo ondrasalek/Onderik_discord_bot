@@ -33,7 +33,7 @@ class Info(commands.Cog, name="Info příkazy"):
 
         embed = discord.Embed(
             title=nick,
-            url="https://ondrasalek.github.io/onderik/",
+            #url="https://ondrasalek.github.io/onderik/",
             timestamp=datetime.datetime.utcnow(),
             color = discord.Colour.dark_blue()
         )
