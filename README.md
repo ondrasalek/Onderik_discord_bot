@@ -100,6 +100,6 @@ with open("configuration.json", "r") as config:
 
 |PICTURE | NAME|
 :---:  | :--- |
-|<img src="./src/onderik-black.png" alt="banner black" height="30" >| Banner Black|
-|<img src="./src/onderik-white.png" alt="banner white" height="30" >| Banner White|
+|<img src="./src/avatar-black.png" alt="banner black" height="30" >| Banner Black|
+|<img src="./src/avatar-white.png" alt="banner white" height="30" >| Banner White|
 |<img src="./src/logo-onderik.png" alt="logo" height="50" >| Logo|
