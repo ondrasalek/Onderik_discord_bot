@@ -1,10 +1,8 @@
 
 test/
 .DS_Store
-#DiscordBot/configuration.json
 *guilds/*json
 *.json
 *.pyc
 .env
 *.ini
-sources/logo.psb
