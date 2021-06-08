@@ -1,8 +1,6 @@
 
-test/
 .DS_Store
-*guilds/*json
-*.json
+guilds/
 *.pyc
 .env
 *.ini
