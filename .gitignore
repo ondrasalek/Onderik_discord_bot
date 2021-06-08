@@ -1,7 +1,7 @@
 
 test/
 .DS_Store
-DiscordBot/configuration.json
+#DiscordBot/configuration.json
 *guilds/*json
 *.json
 *.pyc
