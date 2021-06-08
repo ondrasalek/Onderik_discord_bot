@@ -24,7 +24,6 @@ Bot can do:
 
 ```shell
 pip install discord.py
-pip install discord
 pip install validators
 pip install youtube_dl
 pip install python-dotenv
