@@ -24,7 +24,7 @@ with open("./DiscordBot/configuration.json", "r") as config:
 	def_prefix = data["prefix"]
 
 def get_prefix(bot, message):
-    f = open("./DiscordBot//guilds/prefixes.json", "r")
+    f = open("./DiscordBot/guilds/prefixes.json", "r")
     prefixes = json.load(f)
     try:
         return prefixes[str(message.guild.id)]
