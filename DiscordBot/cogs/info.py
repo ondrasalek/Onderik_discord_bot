@@ -16,7 +16,7 @@ class Info(commands.Cog, name="Info příkazy"):
     async def info_bot(self, ctx):
         guild = ctx.guild
 
-        f = open(f"./guilds/prefixes.json", "r+")
+        f = open(f"./DiscordBot/guilds/prefixes.json", "r+")
         prefixes = json.load(f)
         prefix = prefixes[str(guild.id)]
         f.close
@@ -74,7 +74,7 @@ class Info(commands.Cog, name="Info příkazy"):
                 await channel.send("https://discord.gg/bHMn2FSga7")
                 await bot.process_commands(message)
             if content == f"PREFIX {str(name)}":
-                f = open(f"./guilds/prefixes.json", "r+")
+                f = open(f"./DiscordBot/guilds/prefixes.json", "r+")
                 prefixes = json.load(f)
                 prefix = prefixes[str(guild.id)]
                 f.close
@@ -186,7 +186,7 @@ class Info(commands.Cog, name="Info příkazy"):
         TChannels = len(guild.text_channels)
         VChannels = len(guild.voice_channels)
 
-        f = open(f"./guilds/{guild.id}.json", "r")
+        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             url = data["URL"]

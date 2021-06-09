@@ -41,7 +41,7 @@ class Clear(commands.Cog, name="Clear"):
         embed2.add_field(name=f"Smazání {amount} zpráv v", value=TChannel.mention,inline=False)
         embed2.add_field(name='uživatelem', value=author.mention,inline=False)
         
-        f = open(f"guilds/{guild.id}.json", "r")
+        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             channel = data["BotLog"]

@@ -11,7 +11,7 @@ class HelpCog(commands.Cog, name="Zavolá tuto POMOC"):
 					description = "Zobrazí nápovědu.",
                     hidden = True)
 	async def command (self, ctx, commandName=None):
-            with open("./configuration.json", "r") as config: 
+            with open("./DiscordBot/configuration.json", "r") as config: 
                 data = json.load(config)
                 prefix = data["prefix"]
             if commandName is None:

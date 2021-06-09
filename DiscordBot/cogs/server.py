@@ -15,7 +15,7 @@ class Server(commands.Cog, name="Server příkazy"):
     @commands.has_permissions(administrator = True)
     async def change_prefix(self, ctx, prefix):
         try:
-            f = open(f"./guilds/prefixes.json", "r+")
+            f = open(f"./DiscordBot/guilds/prefixes.json", "r+")
             prefixes = json.load(f)
             prefixes[str(ctx.guild.id)] = prefix
             
@@ -39,7 +39,7 @@ class Server(commands.Cog, name="Server příkazy"):
         guild = ctx.guild
         roles = guild.roles
         if role is None:
-            f = open(f"./guilds/{guild.id}.json", "r+") 
+            f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
             data = json.load(f)
             data["Autorole"] = ""
             f.seek(0)
@@ -54,7 +54,7 @@ class Server(commands.Cog, name="Server příkazy"):
         else:
             color = role.color
             roleId = role.id
-            f = open(f"./guilds/{guild.id}.json", "r+") 
+            f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
             data = json.load(f)
             data["Autorole"] = roleId
             f.seek(0)
@@ -79,7 +79,7 @@ class Server(commands.Cog, name="Server příkazy"):
     async def set_guild_url(self, ctx, url: str):
         guild = ctx.guild
         if url == "None" or url == "" or url == "none":
-            f = open(f"./guilds/{guild.id}.json", "r+") 
+            f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
             data = json.load(f)
             data["URL"] = ""
             f.seek(0)
@@ -93,7 +93,7 @@ class Server(commands.Cog, name="Server příkazy"):
                     )
         else:
             if url == "url" or url == "now":
-                f = open(f"./guilds/{guild.id}.json", "r")
+                f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
                 data = json.load(f)
                 try:
                     url = data["URL"]
@@ -112,7 +112,7 @@ class Server(commands.Cog, name="Server příkazy"):
                 if len(url) < 2048:
                     valid = validators.url(url)
                     if valid is True:
-                        f = open(f"./guilds/{guild.id}.json", "r+") 
+                        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                         data = json.load(f)
                         data["URL"] = url
                         f.seek(0)
@@ -150,7 +150,7 @@ class Server(commands.Cog, name="Server příkazy"):
     async def set_botlog(self, ctx, channel: str):
         guild = ctx.guild
         if channel == "None" or channel == "":
-            f = open(f"./guilds/{guild.id}.json", "r+") 
+            f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
             data = json.load(f)
             data["BotLog"] = ""
             f.seek(0)
@@ -164,7 +164,7 @@ class Server(commands.Cog, name="Server příkazy"):
                     )
         else:
             if channel == "channel" or channel == "now":
-                f = open(f"./guilds/{guild.id}.json", "r")
+                f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
                 data = json.load(f)
                 try:
                     botlog = data["BotLog"]
@@ -192,7 +192,7 @@ class Server(commands.Cog, name="Server příkazy"):
                         bl = discord.utils.get(guild.channels, id=int(channel))
                 
                     if discord.ChannelType.text == bl.type:
-                        f = open(f"./guilds/{guild.id}.json", "r+") 
+                        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                         data = json.load(f)
                         data["BotLog"] = bl.id
                         f.seek(0)
@@ -242,7 +242,7 @@ class Server(commands.Cog, name="Server příkazy"):
             if message == "None" or message == "":
                 wm = None
                 
-                f = open(f"./guilds/{guild.id}.json", "r+") 
+                f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                 data = json.load(f)
                 data["WelcomeMSG"] = ""
                 f.seek(0)
@@ -257,7 +257,7 @@ class Server(commands.Cog, name="Server příkazy"):
                 await ctx.send(embed=embed)
             else:
                 if message == "message" or message == "now":
-                    f = open(f"./guilds/{guild.id}.json", "r")
+                    f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
                     data = json.load(f)
                     try:
                         message = data["WelcomeMSG"]
@@ -307,7 +307,7 @@ class Server(commands.Cog, name="Server příkazy"):
                     f.close() 
                 else:
                     if len(message) < 333:
-                        f = open(f"./guilds/{guild.id}.json", "r+") 
+                        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                         data = json.load(f)
                         data["WelcomeMSG"] = message
                         f.seek(0)
@@ -380,7 +380,7 @@ class Server(commands.Cog, name="Server příkazy"):
         
         if message == "None" or message == "":
             pm = None
-            f = open(f"./guilds/{guild.id}.json", "r+") 
+            f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
             data = json.load(f)
             data["PrivateMSG"] = ""
             f.seek(0)
@@ -396,7 +396,7 @@ class Server(commands.Cog, name="Server příkazy"):
 
         else:
             if message == "message" or message == "now":
-                f = open(f"./guilds/{guild.id}.json", "r")
+                f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
                 data = json.load(f)
                 try:
                     url = data["URL"]
@@ -448,7 +448,7 @@ class Server(commands.Cog, name="Server příkazy"):
                 f.close() 
             else:
                 if len(message) < 333:
-                    f = open(f"./guilds/{guild.id}.json", "r+") 
+                    f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                     data = json.load(f)
                     data["PrivateMSG"] = message
                     f.seek(0)
@@ -516,7 +516,7 @@ class Server(commands.Cog, name="Server příkazy"):
             if message == "None" or message == "":  
                 bm = None
                 
-                f = open(f"./guilds/{guild.id}.json", "r+") 
+                f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                 data = json.load(f)
                 data["ByeMSG"] = ""
                 f.seek(0)
@@ -531,7 +531,7 @@ class Server(commands.Cog, name="Server příkazy"):
                 await ctx.send(embed=embed)
             else:
                 if message == "message" or message == "now":
-                    f = open(f"./guilds/{guild.id}.json", "r")
+                    f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
                     data = json.load(f)
                     try:
                         message = data["ByeMSG"]
@@ -576,7 +576,7 @@ class Server(commands.Cog, name="Server příkazy"):
                     f.close()
                 else:
                     if len(message) < 333:
-                        f = open(f"./guilds/{guild.id}.json", "r+") 
+                        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r+") 
                         data = json.load(f)
                         data["ByeMSG"] = message
                         f.seek(0)

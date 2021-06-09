@@ -15,7 +15,7 @@ class Welcome(commands.Cog):
         icon_url = guild.icon_url
 
         # autorole
-        f = open(f"./guilds/{guild.id}.json", "r")
+        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
         data = json.load(f)
         bcolor = 0x000000
         try:

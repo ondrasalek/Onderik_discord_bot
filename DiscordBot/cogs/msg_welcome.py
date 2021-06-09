@@ -18,7 +18,7 @@ class Welcome(commands.Cog):
         wcolor = 0xfafafa
                 
         # autorole
-        f = open(f"./guilds/{guild.id}.json", "r")
+        f = open(f"./DiscordBot/guilds/{guild.id}.json", "r")
         data = json.load(f)
         try:
             autorole = data["Autorole"]
