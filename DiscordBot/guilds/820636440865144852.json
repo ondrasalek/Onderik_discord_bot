@@ -1,0 +1,10 @@
+{
+    "GuildID": 820636440865144852,
+    "GuildName": "ONDERIK - podpora",
+    "Autorole": 820639654537330749,
+    "URL": "https://ondrasalek.github.io/onderik/",
+    "BotLog": 820636529159438348,
+    "WelcomeMSG": "V\u00edtej *{user}*, r\u00e1di t\u011b u n\u00e1s vid\u00edme\nna `ONDERIK - podpora`",
+    "PrivateMSG": "Pokud hled\u00e1\u0161 pomoc, v sekci **`Podpora`** se m\u016f\u017ee\u0161 zeptat na cokoliv.\n\nD\u00e1le se zde dozv\u00ed\u0161 chystan\u00e9 novinky a pokud bude\u0161 cht\u00edt, m\u016f\u017ee\u0161 se zapojit do testov\u00e1n\u00ed nov\u00fdch funkc\u00ed. \n\nU\u017eij si z\u00e1bavu \ud83d\ude04 ",
+    "ByeMSG": "Opustil n\u00e1s *`{user}`* \ud83d\ude2d "
+}
