@@ -18,7 +18,7 @@ load_dotenv()
 token = os.getenv("token")
 prefix = os.getenv("prefix")'''
 
-with open("configuration.json", "r") as config: 
+with open("./configuration.json", "r") as config: 
 	data = json.load(config)
 	token = f'{data["token1"]}.{data["token2"]}.{data["token3"]}'
 	def_prefix = data["prefix"]
