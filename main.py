@@ -13,15 +13,14 @@ import os
 import datetime
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-'''from dotenv import load_dotenv
+from dotenv import load_dotenv
 load_dotenv()
-token = os.getenv("token")
-prefix = os.getenv("prefix")'''
-
-with open("./DiscordBot/configuration.json", "r") as config: 
+token = f'{os.getenv("token1")}.{os.getenv("token2")}.{os.getenv("token3")}'
+prefix = os.getenv("prefix")
+'''with open("./DiscordBot/configuration.json", "r") as config: 
 	data = json.load(config)
-	token = f'{data["token1"]}.{data["token2"]}.{data["token3"]}'
-	def_prefix = data["prefix"]
+	token = data["token"]
+	def_prefix = data["prefix"]'''
 
 def get_prefix(bot, message):
     f = open("./DiscordBot/guilds/prefixes.json", "r")
