@@ -3,4 +3,4 @@
 *.pyc
 *.ini
 .env
-./DiscordBot/configuration.json
+/DiscordBot/configuration.json
