@@ -13,14 +13,16 @@ import os
 import datetime
 #------------------------------------------------------------------
 #------------------------------------------------------------------
+"""
 from dotenv import load_dotenv
 load_dotenv()
 token = f'{os.getenv("token1")}.{os.getenv("token2")}.{os.getenv("token3")}'
 prefix = os.getenv("prefix")
-'''with open("./DiscordBot/configuration.json", "r") as config: 
+"""
+with open("./DiscordBot/configuration.json", "r") as config: 
 	data = json.load(config)
 	token = data["token"]
-	def_prefix = data["prefix"]'''
+	def_prefix = data["prefix"]
 
 def get_prefix(bot, message):
     f = open("./DiscordBot/guilds/prefixes.json", "r")
@@ -45,7 +47,8 @@ initial_extensions = [
 	"DiscordBot.cogs.msg_welcome",
  	"DiscordBot.cogs.msg_private",
     "DiscordBot.cogs.msg_bye",
-    "DiscordBot.cogs.command"
+    "DiscordBot.cogs.command",
+    "DiscordBot.cogs.slash"
     #"cogs.music",
 ]
 if __name__ == '__main__':
