@@ -2,5 +2,5 @@
 .DS_Store
 *.pyc
 *.ini
-/.env
+.env
 DiscordBot/configuration.json
