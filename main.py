@@ -84,6 +84,9 @@ async def on_ready():
                 f.truncate()
             if data["url"] == "":
                 data["url"] = "https://www.google.com/"
+                f.seek(0)
+                json.dump(data, f, indent=4)
+                f.truncate()
             else:
                 pass
         except:
