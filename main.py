@@ -13,7 +13,6 @@ import os
 import datetime
 #------------------------------------------------------------------
 #------------------------------------------------------------------
-"""
 from dotenv import load_dotenv
 load_dotenv()
 token = f'{os.getenv("token1")}.{os.getenv("token2")}.{os.getenv("token3")}'
@@ -23,7 +22,6 @@ with open("./DiscordBot/configuration.json", "r") as config:
 	data = json.load(config)
 	token = data["token"]
 	def_prefix = data["prefix"]
-
 def get_prefix(bot, message):
     f = open("./DiscordBot/guilds/prefixes.json", "r")
     prefixes = json.load(f)
@@ -31,6 +29,7 @@ def get_prefix(bot, message):
         return prefixes[str(message.guild.id)]
     except AttributeError:
         pass
+"""
 #------------------------------------------------------------------
 # Intents
 intents = discord.Intents.default()
