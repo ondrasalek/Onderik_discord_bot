@@ -75,19 +75,23 @@ async def on_ready():
         try:
             f = open(f"./DiscordBot//guilds/{guild.id}.json", "r+")
             data = json.load(f)
-            if  data["GuildName"] == guild.name:
+            if data["GuildName"] == guild.name:
                 pass
             else:
                 data["GuildName"] = guild.name
                 f.seek(0)
                 json.dump(data, f, indent=4)
                 f.truncate()
+            if data["url"] == "":
+                data["url"] = "https://www.google.com/"
+            else:
+                pass
         except:
             guild_dict = {
 					"GuildID": guild.id,
      				"GuildName":guild.name,
 					"Autorole": "",
-					"URL": "", 
+					"URL": "https://www.google.com/", 
 					"BotLog": "",
 					"WelcomeMSG": "",
 					"PrivateMSG": "",
@@ -125,7 +129,7 @@ async def on_guild_join(guild):
 				"GuildID": guild.id,
 				"GuildName":guild.name,
 				"Autorole": "",
-				"URL": "", 
+				"URL": "https://www.google.com/", 
 				"BotLog": "",
 				"WelcomeMSG": "",
 				"PrivateMSG": "",
