@@ -16,7 +16,7 @@ import datetime
 from dotenv import load_dotenv
 load_dotenv()
 token = f'{os.getenv("token1")}.{os.getenv("token2")}.{os.getenv("token3")}'
-prefix = os.getenv("prefix")
+def_prefix = os.getenv("prefix")
 """
 with open("./DiscordBot/configuration.json", "r") as config: 
 	data = json.load(config)
